@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fashion — FASCO | Інтернет-магазин одягу</title>
+    <meta name="description" content="Колекція модного одягу в інтернет-магазині FASCO.">
+
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&amp;family=Lora:wght@400;500;600;700&amp;family=Noto+Sans:wght@400;500;600;700&amp;family=Volkhov:wght@400;700&amp;display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/css/shop-style.css">
+    <link rel="stylesheet" href="assets/css/shop-sections.css">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="header-container">
+            <a href="index.html" class="logo" aria-label="FASCO — Головна">FASCO</a>
+            <input type="checkbox" id="shop-menu-toggle" class="menu-toggle-input sr-only">
+            
+            <nav class="main-nav" id="main-navigation" aria-label="Основна навігація">
+                <ul>
+                    <li><a href="index.html">Головна</a></li>
+                    <li><a href="shop-page.html" class="active" aria-current="page">Магазин</a></li>
+                    <li><a href="product-page.html">Товари</a></li>
+                    <li><a class="pages-link" href="404.html">Pages</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <details class="search-control">
+                    <summary class="icon-btn" aria-label="Показати поле пошуку" title="Пошук">
+                        <svg width="18" height="18" aria-hidden="true">
+                            <use href="assets/images/icons/sprite-shop-page.svg#icon-search"></use>
+                        </svg>
+                    </summary>
+                    
+                    <div class="search-panel">
+                        <label for="product-search">Пошук товарів</label>
+                        <input id="product-search" type="search" placeholder="Назва товару…" autocomplete="off">
+                    </div>
+                </details>
+
+                <span class="icon-btn" role="img" aria-label="Особистий кабінет">
+                    <svg width="18" height="20" aria-hidden="true">
+                        <use href="assets/images/icons/sprite-shop-page.svg#icon-people"></use>
+                    </svg>
+                </span>
+
+                <button type="button" class="icon-btn" aria-label="Список бажань">
+                    <svg width="19" height="18" aria-hidden="true">
+                        <use href="assets/images/icons/sprite-shop-page.svg#icon-star"></use>
+                    </svg>
+                </button>
+
+                <button type="button" class="icon-btn" aria-label="Кошик">
+                    <svg width="18" height="20" aria-hidden="true">
+                        <use href="assets/images/icons/sprite-shop-page.svg#icon-hand-bag"></use>
+                    </svg>
+                </button>
+            </div>
+            <label class="menu-btn" for="shop-menu-toggle" aria-label="Відкрити або закрити меню" title="Меню">
+                <span></span><span></span><span></span>
+            </label>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-title-section">
+            <div class="container">
+                <h1 class="page-title">Fashion</h1>
+                <nav class="path" aria-label="breadcrumb">
+                    <a href="index.html">Home</a>
+                    <svg class="breadcrumb-arrow" width="4.26" height="7.84" aria-hidden="true">
+                        <use href="assets/images/icons/sprite-shop-page.svg#icon-right-arrow"></use>
+                    </svg>
+                    <span class="current">Fashion</span>
+                </nav>
+            </div>
+        </section>
+
+        <section class="catalog-section container" id="products">
+            <input type="checkbox" id="shop-filters-toggle" class="filters-toggle-input sr-only">
+            <label class="mobile-filter-toggle" for="shop-filters-toggle">
+                <span aria-hidden="true">☷</span> Фільтри
+            </label>
+
+            <aside class="filters-sidebar" id="filters-panel">
+                <h2 class="filters-heading">Фільтри</h2>
+
+                <div class="filter-group">
+                    <h3>Розмір</h3>
+                    <div class="size-options">
+                        <button type="button" class="size-btn">S</button>
+                        <button type="button" class="size-btn">M</button>
+                        <button type="button" class="size-btn">L</button>
+                        <button type="button" class="size-btn">XL</button>
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <h3>Кольори</h3>
+                    <div class="color-options">
+                        <span class="color-dot filter-color-1"></span>
+                        <span class="color-dot filter-color-2"></span>
+                        <span class="color-dot filter-color-3"></span>
+                        <span class="color-dot filter-color-4"></span>
+                        <span class="color-dot filter-color-5"></span>
+                        <span class="color-dot filter-color-6"></span>
+                        <span class="color-dot filter-color-7"></span>
+                        <span class="color-dot filter-color-8"></span>
+                        <span class="color-dot filter-color-9"></span>
+                        <span class="color-dot filter-color-10"></span>
+                        <span class="color-dot filter-color-11"></span>
+                        <span class="color-dot filter-color-12"></span>
+                        <span class="color-dot filter-color-13"></span>
+                        <span class="color-dot filter-color-14"></span>
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <h3>Ціни</h3>
+                    <ul class="price-list">
+                        <li><a href="#">$0-$50</a></li>
+                        <li><a href="#">$50-$100</a></li>
+                        <li><a href="#">$100-$150</a></li>
+                        <li><a href="#">$150-$200</a></li>
+                        <li><a href="#">$300-$400</a></li>
+                    </ul>
+                </div>
+
+                <div class="filter-group collapsible">
+                    <h3>Бренди</h3>
+                    <ul class="brand-list">
+                        <li><a href="#">Minimog</a></li>
+                        <li><a href="#">Retrolie Brook</a></li>
+                        <li><a href="#">Learts</a></li>
+                        <li><a href="#">Vagabond</a></li>
+                        <li><a href="#">Abby</a></li>
+                    </ul>
+                </div>
+
+                <div class="filter-group collapsible">
+                    <h3>Колекції</h3>
+                    <ul class="collection-list">
+                        <li><a href="#">Всі товари</a></li>
+                        <li><a href="#">Бестселери</a></li>
+                        <li><a href="#">Новинки</a></li>
+                        <li><a href="#">Аксесуари</a></li>
+                    </ul>
+                </div>
+                <div class="filter-group">
+                    <h3>Теги</h3>
+                    <ul class="tags-list">
+                        <li><a href="#">Мода</a></li>
+                        <li><a href="#">Капелюхи</a></li>
+                        <li><a href="#">Сандалі</a></li>
+                        <li><a href="#">Ремені</a></li>
+                        <li><a href="#">Сумки</a></li>
+                        <li><a href="#">Кросівки</a></li>
+                        <li><a href="#">Денім</a></li>
+                        <li><a href="#">Minimog</a></li>
+                        <li><a href="#">Vagabond</a></li>
+                        <li><a href="#">Окуляри</a></li>
+                        <li><a href="#">Пляжний одяг</a></li>
+                    </ul>
+                </div>
+            </aside>
+
+            <div class="products-content">
+                <input class="view-input sr-only" type="radio" id="view-list" name="catalog-view">
+                <input class="view-input sr-only" type="radio" id="view-2" name="catalog-view">
+                <input class="view-input sr-only" type="radio" id="view-3" name="catalog-view" checked>
+                <input class="view-input sr-only" type="radio" id="view-4" name="catalog-view">
+                <input class="view-input sr-only" type="radio" id="view-5" name="catalog-view">
+                <div class="catalog-toolbar">
+
+                    <div class="sorting-dropdown" aria-label="Сортування: найкращі продажі">
+                        <span>Найкращі продажі</span>
+                        <svg width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true">
+                            <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" />
+                        </svg>
+                    </div>
+
+                    <div class="view-switchers" role="group" aria-label="Вигляд товарів">
+                        <label for="view-list" class="view-btn" title="Показати товари списком"
+                            aria-label="Показати товари списком">
+                            <svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true">
+                                <use href="assets/images/icons/sprite-shop-page.svg#icon-view-list"></use>
+                            </svg>
+                        </label>
+
+                        <label for="view-2" class="view-btn" title="Дві колонки товарів"
+                            aria-label="Дві колонки товарів">
+                            <svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true">
+                                <use href="assets/images/icons/sprite-shop-page.svg#icon-view-2-columns"></use>
+                            </svg>
+                        </label>
+
+                        <label for="view-3" class="view-btn" title="Три колонки товарів"
+                            aria-label="Три колонки товарів">
+                            <svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true">
+                                <use href="assets/images/icons/sprite-shop-page.svg#icon-view-3-columns"></use>
+                            </svg>
+                        </label>
+
+                        <label for="view-4" class="view-btn" title="Чотири колонки товарів"
+                            aria-label="Чотири колонки товарів">
+                            <svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true">
+                                <use href="assets/images/icons/sprite-shop-page.svg#icon-view-4-columns"></use>
+                            </svg>
+                        </label>
+
+                        <label for="view-5" class="view-btn" title="П’ять колонок товарів"
+                            aria-label="П’ять колонок товарів">
+                            <svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true">
+                                <use href="assets/images/icons/sprite-shop-page.svg#icon-view-5-columns"></use>
+                            </svg>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="products-grid" id="product-grid">
+                    <article class="product-card">
+                        <div class="product-image-wrap">
+                            <img src="assets/images/shop/shop-red-hat.webp" alt="Червоний жіночий капелюх"
+                                loading="lazy">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Червоний капелюх</h3>
+                            <p class="product-price">$8.00</p>
+                            <div class="product-colors">
+                                <span class="color-dot product-1-color-1 is-selected"></span>
+                                <span class="color-dot product-1-color-2"></span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <div class="product-image-wrap sold-out-wrap">
+                            <img src="assets/images/shop/shop-black-shirt.webp" alt="Чорна жіноча сорочка"
+                                loading="lazy">
+                            <span class="sold-out-badge">РОЗПРОДАНО</span>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Лляна сорочка</h3>
+                            <p class="product-price">$17.00</p>
+                            <div class="product-colors">
+                                <span class="color-dot product-2-color-1 is-selected"></span>
+                                <span class="color-dot product-2-color-2"></span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <div class="product-image-wrap">
+                            <img src="assets/images/shop/shop-long-coat.webp" alt="Жіночий чорний жакет" loading="lazy">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Жакет із довгими рукавами</h3>
+                            <p class="product-price">$106.00</p>
+                            <div class="product-colors">
+                                <span class="color-dot product-3-color-1 is-selected"></span>
+                                <span class="color-dot product-3-color-2"></span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <div class="product-image-wrap">
+                            <img src="assets/images/shop/shop-denim-hat.webp" alt="Темно-синій капелюх" loading="lazy">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Синій капелюх</h3>
+                            <p class="product-price">$25.00</p>
+                            <div class="product-colors">
+                                <span class="color-dot product-4-color-1 is-selected"></span>
+                                <span class="color-dot product-4-color-2"></span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <div class="product-image-wrap">
+                            <img src="assets/images/shop/shop-black-top.webp" alt="Чорний жіночий топ" loading="lazy">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Чорний топ</h3>
+                            <p class="product-price">$25.00</p>
+                            <div class="product-colors">
+                                <span class="color-dot product-5-color-1 is-selected"></span>
+                                <span class="color-dot product-5-color-2">
+                                    <img src="assets/images/shop/shop-plaid-cloth.webp"
+                                        alt="Картатий візерунок">
+                                </span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <div class="product-image-wrap"><a href="product-page.html" aria-label="Переглянути червону вітровку">
+                            <img src="assets/images/shop/shop-red-jacket.webp" alt="Червона вітровка"
+                                loading="lazy"></a>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title"><a href="product-page.html">Червона вітровка</a></h3>
+                            <p class="product-price">
+                                $39.00 <del>$59.00</del>
+                            </p>
+                            <div class="product-colors">
+                                <span class="color-dot product-6-color-1 is-selected"></span>
+                                <span class="color-dot product-6-color-2"></span>
+                                <span class="color-dot product-6-color-3"></span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <div class="product-image-wrap">
+                            <img src="assets/images/shop/shop-sunglasses.webp" alt="Сонцезахисні окуляри"
+                                loading="lazy">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Поляризаційні окуляри</h3>
+                            <p class="product-price">
+                                $18.00 <del>$21.00</del>
+                            </p>
+                            <div class="product-colors">
+                                <span class="color-dot product-7-color-1 is-selected"></span>
+                                <span class="color-dot product-7-color-2"></span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <div class="product-image-wrap">
+                            <img src="assets/images/shop/shop-black-jacket.webp" alt="Чорна жіноча куртка"
+                                loading="lazy">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Куртка Rockstar</h3>
+                            <p class="product-price">$22.00</p>
+                            <div class="product-colors">
+                                <span class="color-dot product-8-color-1 is-selected"></span>
+                                <span class="color-dot product-8-color-2"></span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <div class="product-image-wrap">
+                            <img src="assets/images/shop/shop-dot-dress.webp" alt="Чорна сукня в горошок"
+                                loading="lazy">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Чорна сукня в горошок</h3>
+                            <p class="product-price">$20.00</p>
+                            <div class="product-colors">
+                                <span class="color-dot product-9-color-1 is-selected"></span>
+                                <span class="color-dot product-9-color-2"></span>
+                                <span class="color-dot product-9-color-3"></span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+                <nav class="catalog-pagination" aria-label="Сторінки каталогу">
+                    <span class="page-number active" aria-current="page">1</span>
+                    <span class="page-number">2</span>
+                    <span class="page-number">3</span>
+                    <span class="page-number">&raquo;</span>
+                </nav>
+            </section>
+
+            <section class="peaky-section">
+            <div class="peaky-banner">
+                <div class="model-wrapper">
+                    <img src="assets/images/peaky-model.webp" alt="Модель Гострі картузи" class="peaky-model-img">
+                </div>
+
+                <object type="image/svg+xml" data="assets/images/icons/peaky-lines-home.svg" class="peaky-lines-overlay"></object>
+
+                <div class="peaky-separator"></div>
+
+                <div class="peaky-right-content-zone">
+                    <div class="peaky-content">
+                        <p class="peaky-subtitle">Жіноча колекція</p>
+                        <h2 class="peaky-title">Гострі картузи</h2>
+                        
+                        <h3 class="peaky-desc-title">ОПИС</h3> 
+                        <p class="peaky-desc">Ексклюзивна жіноча колекція, що поєднує класичну стриманість із сучасними модними трендами. 
+                            Ідеальний вибір для сміливих жінок, які цінують елегантність, комфорт та неперевершену якість кожної деталі. Створіть свій концептуальний образ разом з FASCO.</p>
+                        
+                        <div class="peaky-size-row">
+                            <span class="size-label">Розмір:</span> 
+                            <span class="size-badge">M</span>
+                        </div>
+                        
+                        <div class="peaky-price">$100.<span class="peaky-cents">00</span></div>
+                        <button class="btn-buy-peaky">Купити зараз</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="features-row">
+                <div class="feature-box">
+                    <svg class="feature-icon" width="51" height="50" viewBox="0 0 51 50" role="img" aria-label="Рука і зірка" focusable="false"><use href="assets/images/icons/sprite-home.svg#peaky-hand-and-star"></use></svg>
+                    <div class="feature-text">
+                        <h3>Висока якість</h3>
+                        <p>виготовлено з найкращих матеріалів</p>
+                    </div>
+                </div>
+                <div class="feature-box">
+                    <svg class="feature-icon" width="38" height="50" viewBox="0 0 38 50" role="img" aria-label="Значок" focusable="false"><use href="assets/images/icons/sprite-home.svg#peaky-badge"></use></svg>
+                    <div class="feature-text">
+                        <h3>Гарантійний захист</h3> 
+                        <p>Понад 2 роки</p>
+                    </div>
+                </div>
+                <div class="feature-box">
+                    <svg class="feature-icon" width="46" height="50" viewBox="0 0 46 50" role="img" aria-label="Коробка" focusable="false"><use href="assets/images/icons/sprite-home.svg#peaky-box"></use></svg>
+                    <div class="feature-text">
+                        <h3>Безкоштовна доставка</h3> 
+                        <p>Замовлення від 150 $</p>
+                    </div>
+                </div>
+                <div class="feature-box">
+                    <svg class="feature-icon" width="50" height="50" viewBox="0 0 50 50" role="img" aria-label="Підтримка" focusable="false"><use href="assets/images/icons/sprite-home.svg#peaky-phone"></use></svg>
+                    <div class="feature-text">
+                        <h3>Підтримка 24 / 7</h3> 
+                        <p>Спеціалізована підтримка</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="instagram-section">
+            <div class="instagram-header">
+                <h2 class="instagram-title">Підписуйтесь на нас в Instagram</h2>
+                <p class="instagram-desc">Приєднуйтесь до нашої спільноти в Instagram! Діліться образами з хештегом #FASCO_Women та надихайтеся новими ідеями щодня.</p>
+            </div>
+
+            <div class="instagram-gallery">
+                <img src="assets/images/insta-man-coat.webp" alt="Чоловік у пальто" class="insta-img insta-edge">
+
+                <img src="assets/images/insta-woman-grey-sweater.webp" alt="Жінка в сірому светрі" class="insta-img insta-tall">
+                <img src="assets/images/insta-woman-blue-bg.webp" alt="Жінка на синьому тлі" class="insta-img insta-short">
+
+                <img src="assets/images/insta-man-shirt.webp" alt="Чоловік у картатій сорочці" class="insta-img insta-tall">
+                <img src="assets/images/insta-woman-blue-dress.webp" alt="Жінка в синій сукні" class="insta-img insta-short">
+                <img src="assets/images/insta-man-jacket.webp" alt="Чоловік у піджаку" class="insta-img insta-tall">
+
+                <img src="assets/images/insta-woman-beige-dress.webp" alt="Жінка в легкій сукні" class="insta-img insta-edge">
+            </div>
+        </section>
+        <section class="newsletter-section">
+        <img src="assets/images/newsletter-boy-orange-coat.webp" alt="Хлопець в помаранчевій куртці" class="news-img-man">
+        
+        <div class="newsletter-content">
+            <h2>Підпишіться на нашу розсилку</h2>
+            <p>Дізнавайтесь першими про нові колекції, закриті розпродажі та модні поради. Підпишіться та отримайте знижку 10% на перше замовлення.</p>
+            
+            <form class="newsletter-form">
+                <input type="email" id="newsletter-email" name="email" placeholder="Ваша електронна пошта" autocomplete="email" required aria-label="Електронна пошта">
+                <button type="button" class="btn-subscribe">Підписатися зараз</button>
+            </form>
+        </div>
+
+        <img src="assets/images/newsletter-girl-grey-jacket.webp" alt="Дівчина в сірій куртці" class="news-img-woman">
+    </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <a href="index.html" class="footer-logo">FASCO</a>
+            <nav class="footer-nav" aria-label="Навігація у футері">
+                <a href="index.html">Головна</a>
+                <a href="shop-page.html" aria-current="page">Магазин</a>
+                <a href="product-page.html">Товари</a>
+                <a class="pages-link" href="404.html">Pages</a>
+            </nav>
+        </div>
+        <p class="copyright">© 2022 FASCO. Усі права захищено.</p>
+    </footer>
+</body>
+</html>

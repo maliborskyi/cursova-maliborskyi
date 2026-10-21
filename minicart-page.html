@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мінікошик — FASCO</title>
+    <meta name="description" content="Червона вітровка FASCO: фото, доступні розміри й кольори, ціна та інформація про доставку.">
+    <link rel="icon" href="assets/images/favicon.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&amp;family=Lora:wght@400;500;600;700&amp;family=Noto+Sans:wght@400;500;600;700&amp;family=Volkhov:wght@400&amp;display=swap">
+    <link rel="stylesheet" href="assets/css/product-style.css">
+    <link rel="stylesheet" href="assets/css/minicart-style.css">
+</head>
+
+<body class="minicart-demo">
+    <a class="skip-link" href="#product" inert>До товару</a>
+    <header class="site-header" inert>
+        <div class="header-container container">
+            <a class="logo" href="index.html" aria-label="FASCO — головна">FASCO</a>
+            <input class="visually-hidden nav-toggle" type="checkbox" id="product-menu-toggle">
+            <nav class="main-nav" id="product-navigation" aria-label="Основна навігація">
+                <a href="index.html">Головна</a>
+                <a href="shop-page.html">Магазин</a>
+                <a class="active" aria-current="page" href="product-page.html">Товари</a>
+                <a class="pages-link" href="404.html">Pages</a>
+            </nav>
+            <div class="header-actions">
+
+                <div class="search-control"><input class="visually-hidden search-toggle" type="checkbox"
+                        id="search-toggle" aria-label="Відкрити або закрити пошук"><label
+                        class="icon-button search-button" for="search-toggle"><svg class="icon" width="18" height="18"
+                            aria-hidden="true">
+                            <use href="assets/images/icons/sprite-product.svg#icon-search"></use>
+                        </svg><span class="visually-hidden">Пошук</span></label>
+                    <div class="search-panel"><label for="product-search">Пошук товарів</label><input type="search"
+                            id="product-search" placeholder="Назва товару…"></div>
+                </div>
+
+                <button class="icon-button" type="button" aria-label="Особистий кабінет"><svg class="icon " width="24"
+                        height="24" aria-hidden="true">
+                        <use href="assets/images/icons/sprite-product.svg#icon-people"></use>
+                    </svg></button>
+                <label class="icon-button header-wish" for="wish-product" aria-label="Додати товар до бажаного"><svg
+                        class="icon " width="24" height="24" aria-hidden="true">
+                        <use href="assets/images/icons/sprite-product.svg#icon-star"></use>
+                    </svg></label>
+
+                <button class="icon-button" type="button" aria-label="Кошик"><svg class="icon" width="24" height="24"
+                        aria-hidden="true">
+                        <use href="assets/images/icons/sprite-product.svg#icon-hand-bag"></use>
+                    </svg></button>
+            </div>
+
+            <label class="icon-button menu-button" for="product-menu-toggle"><span class="visually-hidden">Відкрити або
+                    закрити меню</span><svg class="icon " width="24" height="24" aria-hidden="true">
+                    <use href="assets/images/icons/sprite-product.svg#icon-menu"></use>
+                </svg></label>
+        </div>
+    </header>
+
+    <main inert>
+        <section class="product-section container" id="product" aria-labelledby="product-title">
+            <div class="product-gallery" aria-label="Фотографії товарів колекції">
+                <ul class="product-thumbnails" aria-label="Мініатюри колекції">
+                    <li><img src="assets/images/product/thumb-purple-shirt.webp" alt="Бузкова сорочка" width="60"
+                            height="80">
+                    </li>
+                    <li class="selected" aria-current="true"><img src="assets/images/shop/shop-red-jacket.webp"
+                            alt="Модель у червоній вітровці" width="60" height="80"></li>
+                    <li><img src="assets/images/product/thumb-denim-portrait.webp" alt="Джинсова куртка — деталі"
+                            width="60" height="80"></li>
+                    <li><img src="assets/images/product/thumb-denim-front.webp" alt="Джинсова куртка — вигляд спереду"
+                            width="60" height="80"></li>
+                    <li><img src="assets/images/product/thumb-denim-back.webp" alt="Джинсова куртка — вигляд ззаду"
+                            width="60" height="80"></li>
+                    <li><img src="assets/images/product/thumb-black-coat.webp" alt="Чорне пальто" width="60"
+                            height="80"></li>
+                    <li><img src="assets/images/product/thumb-black-look.webp" alt="Образ із чорною курткою" width="60"
+                            height="80"></li>
+                </ul>
+                <figure class="product-photo"><img src="assets/images/shop/shop-red-jacket.webp"
+                        alt="Модель у червоній вітровці — основне фото товару з макета FASCO" width="604" height="806"
+                        fetchpriority="high"></figure>
+            </div>
+
+            <div class="product-details">
+                <p class="product-brand">FASCO</p>
+                <div class="product-heading">
+                    <h1 id="product-title">Червона вітровка</h1>
+                    <div class="wishlist-control"><input class="visually-hidden" type="checkbox"
+                            id="wish-product"><label class="wishlist-button" for="wish-product"><span
+                                class="visually-hidden">Додати або прибрати товар
+                                зі списку бажань</span><svg class="icon " width="24" height="24" aria-hidden="true">
+                                <use href="assets/images/icons/sprite-product.svg#icon-star"></use>
+                            </svg></label></div>
+                </div>
+
+                <div class="product-rating" aria-label="Оцінка 4 з 5, 3 відгуки"><span class="rating-stars"
+                        aria-hidden="true"><svg class="icon " width="24" height="24" aria-hidden="true">
+                            <use href="assets/images/icons/sprite-product.svg#icon-star-filled"></use>
+                        </svg><svg class="icon " width="24" height="24" aria-hidden="true">
+                            <use href="assets/images/icons/sprite-product.svg#icon-star-filled"></use>
+                        </svg><svg class="icon " width="24" height="24" aria-hidden="true">
+                            <use href="assets/images/icons/sprite-product.svg#icon-star-filled"></use>
+                        </svg><svg class="icon " width="24" height="24" aria-hidden="true">
+                            <use href="assets/images/icons/sprite-product.svg#icon-star-filled"></use>
+                        </svg><svg class="icon " width="24" height="24" aria-hidden="true">
+                            <use href="assets/images/icons/sprite-product.svg#icon-star-outline"></use>
+                        </svg></span><span>(3)</span></div>
+
+                <p class="product-price"><span>$39.00</span><del>$59.00</del><span class="sale-badge">ЗНИЖКА 33%</span>
+                </p>
+                <p class="viewing"><svg class="icon " width="24" height="24" aria-hidden="true">
+                        <use href="assets/images/icons/sprite-product.svg#icon-eye"></use>
+                    </svg><span>24 Людини зараз переглядають цей товар </span></p>
+
+                <div class="sale-timer"><span>Поспішайте! Акція завершується:</span><span class="sale-timer-numbers"
+                        aria-label="0 днів, 5 годин, 59 хвилин, 47 секунд"><span>00</span><b>:</b><span>05</span><b>:</b><span>59</span><b>:</b><span>47</span></span>
+                </div>
+                <div class="stock-status">
+                    <p>Залишилося лише <strong>9</strong> одиниць!</p>
+                    <div class="stock-bar" role="img" aria-label="Залишок товару невеликий"><span></span></div>
+                </div>
+
+
+                <form class="product-options">
+                    <fieldset class="size-picker">
+                        <legend>Розмір: <span class="current-size size-M">M</span><span
+                                class="current-size size-L">L</span><span class="current-size size-XL">XL</span><span
+                                class="current-size size-XXL">XXL</span></legend>
+
+                        <div class="size-options">
+                            <input class="visually-hidden" type="radio" id="size-M" name="size" value="M" checked><label
+                                for="size-M">M</label><input class="visually-hidden" type="radio" id="size-L"
+                                name="size" value="L"><label for="size-L">L</label><input class="visually-hidden"
+                                type="radio" id="size-XL" name="size" value="XL"><label for="size-XL">XL</label><input
+                                class="visually-hidden" type="radio" id="size-XXL" name="size" value="XXL"><label
+                                for="size-XXL">XXL</label>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="color-picker">
+                        <legend>Колір: <span class="current-color color-red">червоний</span><span
+                                class="current-color color-black">чорний</span><span
+                                class="current-color color-pink">рожевий</span></legend>
+
+                        <div class="color-options">
+                            <input class="visually-hidden" type="radio" id="color-red" name="color" value="red"
+                                checked><label class="swatch swatch-red" for="color-red"><span
+                                    class="visually-hidden">Червоний</span></label><input class="visually-hidden"
+                                type="radio" id="color-black" name="color" value="black"><label
+                                class="swatch swatch-black" for="color-black"><span
+                                    class="visually-hidden">Чорний</span></label><input class="visually-hidden"
+                                type="radio" id="color-pink" name="color" value="pink"><label class="swatch swatch-pink"
+                                for="color-pink"><span class="visually-hidden">Рожевий</span></label>
+                        </div>
+                    </fieldset>
+
+                    <div class="quantity-row">
+                        <fieldset class="quantity-field">
+                            <legend>Кількість</legend>
+                            <div class="quantity-control quantity-static" aria-label="Кількість: 1">
+                    <div class="quantity-state"><span aria-hidden="true">−</span><span class="quantity-value" aria-hidden="true">1</span><span aria-hidden="true">+</span></div>
+                </div>
+                        </fieldset><button class="add-to-cart" type="button">Додати до кошика</button>
+                    </div>
+                </form>
+
+                <div class="product-tools"><button type="button"><svg class="icon " width="24" height="24"
+                            aria-hidden="true">
+                            <use href="assets/images/icons/sprite-product.svg#icon-compare"></use>
+                        </svg><span>Порівняти</span></button><button type="button"><svg class="icon " width="24"
+                            height="24" aria-hidden="true">
+                            <use href="assets/images/icons/sprite-product.svg#icon-question"></use>
+                        </svg><span>Запитати</span></button><button type="button"><svg class="icon " width="24"
+                            height="24" aria-hidden="true">
+                            <use href="assets/images/icons/sprite-product.svg#icon-share"></use>
+                        </svg><span>Поділитися</span></button></div>
+
+                <div class="delivery-info">
+                    <p><svg class="icon " width="24" height="24" aria-hidden="true">
+                            <use href="assets/images/icons/sprite-product.svg#icon-truck"></use>
+                        </svg><span><strong>Очікувана доставка:</strong> 30 липня – 3 серпня</span></p>
+                    <p><svg class="icon " width="24" height="24" aria-hidden="true">
+                            <use href="assets/images/icons/sprite-product.svg#icon-return"></use>
+                        </svg><span><strong>Безкоштовна доставка й повернення:</strong> для замовлень від $75</span></p>
+                </div>
+                
+                <div class="secure-checkout"><img src="assets/images/product/payment-methods@2x.png"
+                        alt="Visa, Mastercard, American Express, JCB, Discover, Diners Club і UnionPay" width="640"
+                        height="51">
+                    <p>Гарантовано безпечна оплата</p>
+                </div>
+            </div>
+        </section>
+        
+    <section class="peaky-section">
+        <div class="peaky-banner">
+            <div class="model-wrapper">
+                <img src="assets/images/peaky-model.webp" alt="Модель Гострі картузи" class="peaky-model-img">
+            </div>
+
+            <object type="image/svg+xml" data="assets/images/icons/peaky-lines-home.svg" class="peaky-lines-overlay" aria-label="Позначки деталей одягу: кепка, підтяжки, Hugo Boss та Santoni"></object>
+
+            <div class="peaky-separator"></div>
+
+            <div class="peaky-right-content-zone">
+                <div class="peaky-content">
+                    <p class="peaky-subtitle">Жіноча колекція</p>
+                    <h2 class="peaky-title">Гострі картузи</h2>
+                    
+                    <h3 class="peaky-desc-title">ОПИС</h3> 
+                    <p class="peaky-desc">Ексклюзивна жіноча колекція, що поєднує класичну стриманість із сучасними модними трендами. 
+                        Ідеальний вибір для сміливих жінок, які цінують елегантність, комфорт та неперевершену якість кожної деталі. Створіть свій концептуальний образ разом з FASCO.</p>
+                    
+                    <div class="peaky-size-row">
+                        <span class="size-label">Розмір:</span> 
+                        <span class="size-badge">M</span>
+                    </div>
+                    
+                    <div class="peaky-price">$100.<span class="peaky-cents">00</span></div>
+                    <a class="btn-buy-peaky" href="shop-page.html">Купити зараз</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="features-row">
+            <div class="feature-box">
+                <svg class="feature-icon" width="51" height="50" viewBox="0 0 51 50" role="img" aria-label="Рука і зірка" focusable="false"><use href="assets/images/icons/sprite-product.svg#peaky-hand-and-star"></use></svg>
+                <div class="feature-text">
+                    <h3>Висока якість</h3>
+                    <p>виготовлено з найкращих матеріалів</p>
+                </div>
+            </div>
+            <div class="feature-box">
+                <svg class="feature-icon" width="38" height="50" viewBox="0 0 38 50" role="img" aria-label="Значок" focusable="false"><use href="assets/images/icons/sprite-product.svg#peaky-badge"></use></svg>
+                <div class="feature-text">
+                    <h3>Гарантійний захист</h3> 
+                    <p>Понад 2 роки</p>
+                </div>
+            </div>
+            <div class="feature-box">
+                <svg class="feature-icon" width="46" height="50" viewBox="0 0 46 50" role="img" aria-label="Коробка" focusable="false"><use href="assets/images/icons/sprite-product.svg#peaky-box"></use></svg>
+                <div class="feature-text">
+                    <h3>Безкоштовна доставка</h3> 
+                    <p>Замовлення від 150 $</p>
+                </div>
+            </div>
+            <div class="feature-box">
+                <svg class="feature-icon" width="50" height="50" viewBox="0 0 50 50" role="img" aria-label="Підтримка" focusable="false"><use href="assets/images/icons/sprite-product.svg#peaky-phone"></use></svg>
+                <div class="feature-text">
+                    <h3>Підтримка 24 / 7</h3> 
+                    <p>Спеціалізована підтримка</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="deals-section" aria-labelledby="related-title">
+        <div class="deals-container">
+            <div class="deals-content">
+                <h2 class="deals-title" id="related-title">Вам також може сподобатися</h2>
+                <p class="deals-desc">Доповніть свій образ: відкрийте сукні, комплекти та аксесуари з нашої колекції.</p>
+                
+                <a class="btn-buy-now" href="shop-page.html">До колекції</a>
+                
+                <h3 class="deals-subtitle">Поспішайте, поки не пізно!</h3>
+                
+                <div class="timer-wrapper">
+                    <div class="timer-item">
+                        <div class="timer-box"><span class="timer-num">02</span></div>
+                        <span class="timer-label">Дні</span>
+                    </div>
+                    <div class="timer-item">
+                        <div class="timer-box"><span class="timer-num">06</span></div>
+                        <span class="timer-label">Год</span>
+                    </div>
+                    <div class="timer-item">
+                        <div class="timer-box"><span class="timer-num">05</span></div>
+                        <span class="timer-label">Хв</span>
+                    </div>
+                    <div class="timer-item">
+                        <div class="timer-box"><span class="timer-num">30</span></div>
+                        <span class="timer-label">Сек</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="deals-slider">
+                <div class="slider-nav">
+                    <button class="nav-btn prev-btn" aria-label="Попередній">
+                        <svg width="78" height="78" viewBox="0 0 78 78" aria-hidden="true" focusable="false"><use href="assets/images/icons/sprite-product.svg#deals-btn-prev"></use></svg>
+                    </button>
+                    <button class="nav-btn next-btn" aria-label="Наступний">
+                        <svg width="78" height="78" viewBox="0 0 78 78" aria-hidden="true" focusable="false"><use href="assets/images/icons/sprite-product.svg#deals-btn-next"></use></svg>
+                    </button>
+                </div>
+
+                <div class="slider-track">
+                    <div class="slide-item main-slide">
+                        <img src="assets/images/deal-black-dress.webp" alt="Жінка в чорній сукні" class="slide-img flipped-img">
+                        
+                        <div class="discount-card">
+                            <div class="discount-header">
+                                <span class="discount-num">01</span>
+                                <span class="discount-line"></span>
+                                <span class="discount-name">Весняний розпродаж</span>
+                            </div>
+                            <div class="discount-value">ЗНИЖКА 30%</div>
+                        </div>
+                    </div>
+
+                    <div class="secondary-slides-wrapper">
+                        <div class="secondary-slides">
+                            <div class="slide-item secondary-slide">
+                                <img src="assets/images/deal-blue-set.webp" alt="Жінка в синій сукні" class="slide-img">
+                            </div>
+                            
+                            <div class="slide-item secondary-slide">
+                                <img src="assets/images/deal-casual-outfit.webp" alt="Дівчина в повсякденному одязі" class="slide-img">
+                            </div>
+                        </div>
+
+                        <div class="slider-pagination">
+                            <div class="dot active-dot">
+                                <svg width="27" height="27" viewBox="0 0 27 27" role="img" aria-label="Активна крапка" focusable="false"><use href="assets/images/icons/sprite-product.svg#deals-dot-active"></use></svg>
+                            </div>
+                            <div class="dot">
+                                <svg width="11" height="11" viewBox="0 0 11 11" role="img" aria-label="Неактивна крапка" focusable="false"><use href="assets/images/icons/sprite-product.svg#deals-dot-inactive"></use></svg>
+                            </div>
+                            <div class="dot">
+                                <svg width="11" height="11" viewBox="0 0 11 11" role="img" aria-label="Неактивна крапка" focusable="false"><use href="assets/images/icons/sprite-product.svg#deals-dot-inactive"></use></svg>
+                            </div>
+                            <div class="dot">
+                                <svg width="11" height="11" viewBox="0 0 11 11" role="img" aria-label="Неактивна крапка" focusable="false"><use href="assets/images/icons/sprite-product.svg#deals-dot-inactive"></use></svg>
+                            </div>
+                        </div>
+                    </div> 
+                </div> 
+            </div> 
+        </div> 
+    </section>
+
+    <section class="newsletter-section">
+        <img src="assets/images/newsletter-boy-orange-coat.webp" alt="Хлопець в помаранчевій куртці" class="news-img-man">
+        
+        <div class="newsletter-content">
+            <h2>Підпишіться на нашу розсилку</h2>
+            <p>Дізнавайтесь першими про нові колекції, закриті розпродажі та модні поради. Підпишіться та отримайте знижку 10% на перше замовлення.</p>
+            
+            <form class="newsletter-form">
+                <input type="email" id="newsletter-email" name="email" placeholder="Ваша електронна пошта" autocomplete="email" required aria-label="Електронна пошта">
+                <button type="button" class="btn-subscribe">Підписатися зараз</button>
+            </form>
+        </div>
+
+        <img src="assets/images/newsletter-girl-grey-jacket.webp" alt="Дівчина в сірій куртці" class="news-img-woman">
+    </section>
+
+    </main>
+    <footer class="main-footer" inert>
+        <div class="footer-container">
+            <a href="index.html" class="footer-logo">FASCO</a>
+            <nav class="footer-nav" aria-label="Навігація у футері">
+                <a href="index.html">Головна</a>
+                <a href="shop-page.html">Магазин</a>
+                <a href="product-page.html" aria-current="page">Товари</a>
+                <a class="pages-link" href="404.html">Pages</a>
+            </nav>
+        </div>
+        <p class="copyright">© 2022 FASCO. Усі права захищено.</p>
+    </footer>
+
+    <a class="mini-preview-backdrop" href="product-page.html" tabindex="-1" aria-hidden="true"></a>
+    <aside class="mini-panel" id="minicart-panel" role="dialog" aria-labelledby="mini-title" tabindex="-1">
+        <div class="mini-header">
+            <h2 id="mini-title">Кошик</h2><a class="mini-close" href="product-page.html" aria-label="Закрити мінікошик"><svg
+                    width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
+                    <path d="m4 4 12 12M16 4 4 16" fill="none" stroke="currentColor" stroke-width="1.5" />
+                </svg></a>
+        </div>
+
+        <p class="mini-shipping">Ще <strong>$122.35</strong> — і буде <strong>безкоштовна доставка</strong></p>
+        <div class="mini-product"><a class="mini-photo" href="product-page.html"><img
+                    src="assets/images/shop/shop-red-jacket.webp" alt="Червона вітровка" width="604" height="806"></a>
+
+            <div class="mini-product-info">
+                <h3><a href="product-page.html">Червона вітровка</a></h3>
+                <p class="mini-color">Колір: червоний</p>
+                <p class="mini-unit-price">$39.00</p>
+
+                <div class="mini-quantity quantity-static" aria-label="Кількість: 1">
+                    <div class="mini-qty-state"><span aria-hidden="true">−</span><span class="mini-value" aria-hidden="true">01</span><span aria-hidden="true">+</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mini-bottom"><label class="mini-wrap"><input type="checkbox" id="mini-gift-wrap"
+                    name="mini-gift-wrap"><span>За <strong>$10.00</strong> додати подарункове пакування</span></label>
+            <div class="mini-subtotal"><span>Проміжний підсумок</span><span>$39.00</span></div><a class="mini-checkout"
+                href="cart-page.html">Оформити замовлення</a><a class="mini-view-cart" href="cart-page.html">Переглянути
+                кошик</a>
+        </div>
+    </aside>
+</body>
+</html>
