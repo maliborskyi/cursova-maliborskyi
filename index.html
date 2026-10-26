@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FASCO - Магазину сучасного жіночого одягу</title>
+    <title>FASCO — Магазин сучасного жіночого одягу</title>
     
     <meta name="description" content="Відкрийте для себе FASCO — сучасний інтернет-магазин стильного жіночого одягу. Трендові колекції, знижки до 30%, нові надходження та швидка доставка.">
     
@@ -11,8 +11,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;family=Lora:wght@400;500;600;700&amp;family=Noto+Sans:wght@400;500;600;700&amp;family=Poppins:wght@400;500&amp;family=Volkhov:wght@400&amp;display=swap" rel="stylesheet">
     
-
     <link rel="stylesheet" href="assets/css/home-style.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+
+    <script src="assets/js/store.js" defer></script>
+    <script src="assets/js/main.js" defer></script>
+    <link rel="icon" href="assets/images/favicon.png" type="image/png">
 </head>
 <body>
         <header class="main-header">
@@ -23,16 +27,17 @@
 
             <nav class="nav-menu">
                 <a href="index.html" class="nav-link active">Головна</a>
-                <a href="#" class="nav-link">Пропозиції</a>
-                <a href="#" class="nav-link">Нові надходження</a>
-                <a href="#" class="nav-link">Комплекти</a>
-                <a href="#" class="nav-link">Увійти</a>
+                <a href="#deals" class="nav-link">Пропозиції</a>
+                <a href="#arrivals" class="nav-link">Нові надходження</a>
+                <a href="#collection" class="nav-link">Комплекти</a>
+                <a href="404.html" class="nav-link">Увійти</a>
             </nav>
 
             <button class="btn-signup">Зареєструватися</button>
         </div>
     </header>
 
+    <main id="main-content">
     <section class="hero-section">
         <div class="hero-container">
             
@@ -82,11 +87,12 @@
         </button>
     </div>
 
-    <section class="deals-section">
+    <section class="deals-section" id="deals">
         <div class="deals-container">
             <div class="deals-content">
                 <h2 class="deals-title">Пропозиції місяця</h2>
-                <p class="deals-desc">Оновіть свій гардероб з нашими ексклюзивними пропозиціями цього місяця. Відкрийте для себе стильні сукні, елегантні блузи та модні аксесуари за найвигіднішими цінами.</p>
+                <p class="deals-desc">Оновіть свій гардероб з нашими ексклюзивними пропозиціями цього місяця. 
+                    Відкрийте для себе стильні сукні, елегантні блузи та модні аксесуари за найвигіднішими цінами.</p>
                 
                 <button class="btn-buy-now">Купити зараз</button>
                 
@@ -167,7 +173,7 @@
         </div> 
     </section>
 
-    <section class="new-arrivals-section">
+    <section class="new-arrivals-section" id="arrivals">
         <div class="new-arrivals-container">
             <h2 class="section-title">Нові надходження</h2>
             <p class="section-desc">Зустрічайте нашу нову колекцію для сучасних жінок: трендові фасони та бездоганний крій для вашого неповторного стилю.</p>
@@ -330,7 +336,7 @@
         </div>
     </section>
 
-    <section class="peaky-section">
+    <section class="peaky-section" id="collection">
         <div class="peaky-banner">
             <div class="model-wrapper">
                 <img src="assets/images/peaky-model.webp" alt="Модель Гострі картузи" class="peaky-model-img">
@@ -346,7 +352,8 @@
                     <h2 class="peaky-title">Гострі картузи</h2>
                     
                     <h3 class="peaky-desc-title">ОПИС</h3> 
-                    <p class="peaky-desc">Ексклюзивна жіноча колекція, що поєднує класичну стриманість із сучасними модними трендами. Ідеальний вибір для сміливих жінок, які цінують елегантність, комфорт та неперевершену якість кожної деталі. Створіть свій концептуальний образ разом з FASCO.</p>
+                    <p class="peaky-desc">Ексклюзивна жіноча колекція, що поєднує класичну стриманість із сучасними модними трендами. 
+                        Ідеальний вибір для сміливих жінок, які цінують елегантність, комфорт та неперевершену якість кожної деталі. Створіть свій концептуальний образ разом з FASCO.</p>
                     
                     <div class="peaky-size-row">
                         <span class="size-label">Розмір:</span> 
@@ -425,6 +432,19 @@
                         <div class="side-bg-rect"></div>
                         <img src="assets/images/review-woman-yellow-jacket.webp" alt="Жінка в жовтій куртці" class="side-photo">
                     </div>
+                <div class="side-info">
+                        <p class="side-quote">«Речі, які я замовила, стали найкращим придбанням. Дуже задоволена якістю товарів та обслуговуванням.»</p>
+                        <div class="side-stars">
+                            <svg class="star-icon" width="19" height="19" viewBox="0 0 19 19" role="img" aria-label="зірка" focusable="false"><use href="assets/images/icons/sprite-home.svg#arrivals-star"></use></svg>
+                            <svg class="star-icon" width="19" height="19" viewBox="0 0 19 19" role="img" aria-label="зірка" focusable="false"><use href="assets/images/icons/sprite-home.svg#arrivals-star"></use></svg>
+                            <svg class="star-icon" width="19" height="19" viewBox="0 0 19 19" role="img" aria-label="зірка" focusable="false"><use href="assets/images/icons/sprite-home.svg#arrivals-star"></use></svg>
+                            <svg class="star-icon" width="19" height="19" viewBox="0 0 19 19" role="img" aria-label="зірка" focusable="false"><use href="assets/images/icons/sprite-home.svg#arrivals-star"></use></svg>
+                            <svg class="star-icon" width="19" height="19" viewBox="0 0 19 19" role="img" aria-label="зірка" focusable="false"><use href="assets/images/icons/sprite-home.svg#arrivals-star"></use></svg>
+                        </div>
+                        <div class="side-separator"></div>
+                        <h3 class="side-name">Сюзан Б.</h3>
+                        <p class="side-role">Фотограф</p>
+                    </div>
                 </div>
 
                 <div class="reviews-card main-card">
@@ -434,7 +454,8 @@
                     </div>
 
                     <div class="reviews-info">
-                        <p class="reviews-quote">"Ви точно не пошкодуєте! Якість матеріалів перевершила всі мої очікування. Щиро дякую за створення настільки витонченого та комфортного одягу."</p>
+                        <p class="reviews-quote">"Ви точно не пошкодуєте! Якість матеріалів перевершила всі мої очікування. 
+                            Щиро дякую за створення настільки витонченого та комфортного одягу."</p>
                         
                         <div class="reviews-stars">
                             <svg class="star-icon" width="19" height="19" viewBox="0 0 19 19" role="img" aria-label="зірка" focusable="false"><use href="assets/images/icons/sprite-home.svg#arrivals-star"></use></svg>
@@ -452,6 +473,11 @@
                 </div>
 
                 <div class="reviews-card side-card right-card">
+                    <div class="side-image-wrap">
+                        <div class="side-bg-rect"></div>
+                        <img src="assets/images/review-woman-black.webp" alt="Блондинка в чорному одязі" class="side-photo">
+                    </div>
+                    
                     <div class="side-info">
                         <p class="side-quote">"Саме те, що я шукала! Дякую за чудову якість, швидку доставку та можливість створювати ідеальні образи щодня без зайвого клопоту."</p>
                         <div class="side-stars">
@@ -496,21 +522,21 @@
         <img src="assets/images/newsletter-girl-grey-jacket.webp" alt="Дівчина в сірій куртці" class="news-img-woman">
     </section>
 
+    </main>
     <footer class="main-footer">
         <div class="footer-container">
-            <a href="#" class="footer-logo">FASCO</a>
+            <a href="index.html" class="footer-logo">FASCO</a>
             <nav class="footer-nav">
-                <a href="#">Центр підтримки</a>
-                <a href="#">Виставлення рахунків</a>
-                <a href="#">Договір</a>
-                <a href="#">Кар'єра</a>
-                <a href="#">Блог</a>
-                <a href="#">Часті питання</a>
+                <a href="404.html">Центр підтримки</a>
+                <a href="404.html">Виставлення рахунків</a>
+                <a href="404.html">Договір</a>
+                <a href="404.html">Кар'єра</a>
+                <a href="404.html">Блог</a>
+                <a href="404.html">Часті питання</a>
             </nav>
         </div>
         <p class="copyright">Copyright © 2022 Xpro. Всі права захищено.</p>
     </footer>
     
-    <script src="assets/js/main.js"></script>
 </body>
 </html>

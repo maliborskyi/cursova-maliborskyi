@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Товари — FASCO</title>
+    <title>Червона вітровка — FASCO</title>
     <meta name="description" content="Червона вітровка FASCO: фото, доступні розміри й кольори, ціна та інформація про доставку.">
 
     <link rel="icon" href="assets/images/favicon.png" type="image/png">
@@ -13,6 +13,10 @@
     
     <link rel="stylesheet" href="assets/css/product-style.css">
     <link rel="stylesheet" href="assets/css/minicart-style.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+
+    <script src="assets/js/store.js" defer></script>
+    <script src="assets/js/main.js" defer></script>
 </head>
 
 <body>
@@ -42,7 +46,7 @@
                         height="24" aria-hidden="true">
                         <use href="assets/images/icons/sprite-product.svg#icon-people"></use>
                     </svg></button>
-                <label class="icon-button header-wish" for="wish-product" aria-label="Додати товар до бажаного"><svg
+                <label class="icon-button header-wish" for="wish-product"><span class="visually-hidden">Додати товар до бажаного</span><svg
                         class="icon " width="24" height="24" aria-hidden="true">
                         <use href="assets/images/icons/sprite-product.svg#icon-star"></use>
                     </svg></label>
@@ -61,7 +65,7 @@
 
     <main>
         <section class="product-section container" id="product" aria-labelledby="product-title">
-            <div class="product-gallery" aria-label="Фотографії товарів колекції">
+            <div class="product-gallery" role="group" aria-label="Фотографії товарів колекції">
                 <ul class="product-thumbnails" aria-label="Мініатюри колекції">
                     <li><img src="assets/images/product/thumb-purple-shirt.webp" alt="Бузкова сорочка" width="60" height="80">
                     </li>
@@ -93,7 +97,7 @@
                             </svg></label></div>
                 </div>
 
-                <div class="product-rating" aria-label="Оцінка 4 з 5, 3 відгуки"><span class="rating-stars"
+                <div class="product-rating" role="img" aria-label="Оцінка 4 з 5, 3 відгуки"><span class="rating-stars"
                         aria-hidden="true"><svg class="icon " width="24" height="24" aria-hidden="true">
                             <use href="assets/images/icons/sprite-product.svg#icon-star-filled"></use>
                         </svg><svg class="icon " width="24" height="24" aria-hidden="true">
@@ -110,7 +114,7 @@
                         <use href="assets/images/icons/sprite-product.svg#icon-eye"></use>
                     </svg><span>24 Людини зараз переглядають цей товар </span></p>
 
-                <div class="sale-timer"><span>Поспішайте! Акція завершується:</span><span class="sale-timer-numbers"
+                <div class="sale-timer"><span>Поспішайте! Акція завершується:</span><span class="sale-timer-numbers" role="timer"
                         aria-label="0 днів, 5 годин, 59 хвилин, 47 секунд"><span>00</span><b>:</b><span>05</span><b>:</b><span>59</span><b>:</b><span>47</span></span>
                 </div>
                 <div class="stock-status">
@@ -148,7 +152,7 @@
                     <div class="quantity-row">
                         <fieldset class="quantity-field">
                             <legend>Кількість</legend>
-                            <div class="quantity-control quantity-static" aria-label="Кількість: 1">
+                            <div class="quantity-control quantity-static" role="group" aria-label="Кількість: 1">
                                 <div class="quantity-state"><span aria-hidden="true">−</span><span class="quantity-value"
                                         aria-hidden="true">1</span><span aria-hidden="true">+</span></div>
                             </div>
@@ -198,7 +202,8 @@
                     <h2 class="peaky-title">Гострі картузи</h2>
                     
                     <h3 class="peaky-desc-title">ОПИС</h3> 
-                    <p class="peaky-desc">Ексклюзивна жіноча колекція, що поєднує класичну стриманість із сучасними модними трендами. Ідеальний вибір для сміливих жінок, які цінують елегантність, комфорт та неперевершену якість кожної деталі. Створіть свій концептуальний образ разом з FASCO.</p>
+                    <p class="peaky-desc">Ексклюзивна жіноча колекція, що поєднує класичну стриманість із сучасними модними трендами. 
+                        Ідеальний вибір для сміливих жінок, які цінують елегантність, комфорт та неперевершену якість кожної деталі. Створіть свій концептуальний образ разом з FASCO.</p>
                     
                     <div class="peaky-size-row">
                         <span class="size-label">Розмір:</span> 
@@ -365,7 +370,7 @@
         <p class="copyright">© 2022 FASCO. Усі права захищено.</p>
     </footer>
 
-    <aside class="mini-panel" id="minicart-panel" popover="auto" role="dialog" aria-labelledby="mini-title" tabindex="-1">
+    <div class="mini-panel" id="minicart-panel" popover="auto" role="dialog" aria-labelledby="mini-title" tabindex="-1">
         <div class="mini-header">
             <h2 id="mini-title">Кошик</h2><button class="mini-close" type="button" popovertarget="minicart-panel"
                 popovertargetaction="hide" aria-label="Закрити мінікошик"><svg width="20" height="20" viewBox="0 0 20 20"
@@ -381,7 +386,7 @@
                 <h3><a href="product-page.html">Червона вітровка</a></h3>
                 <p class="mini-color">Колір: червоний</p>
                 <p class="mini-unit-price">$39.00</p>
-                <div class="mini-quantity quantity-static" aria-label="Кількість: 1">
+                <div class="mini-quantity quantity-static" role="group" aria-label="Кількість: 1">
                     <div class="mini-qty-state"><span aria-hidden="true">−</span><span class="mini-value"
                             aria-hidden="true">01</span><span aria-hidden="true">+</span></div>
                 </div>
@@ -394,7 +399,7 @@
                 href="cart-page.html">Оформити замовлення</a><a class="mini-view-cart" href="cart-page.html">Переглянути
                 кошик</a>
         </div>
-    </aside>
+    </div>
 
 </body>
 </html>
