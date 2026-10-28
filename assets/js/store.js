@@ -175,7 +175,8 @@
       (fields.phone.trim().length > 30 ||
         !/^(?:\+?38)?0\d{9}$/.test(fields.phone.replace(/[\s()-]/g, "")))
     )
-      errors.phone = "Вкажіть номер телефону у форматі 0XXXXXXXXX або +380XXXXXXXXX.";
+      errors.phone =
+        "Вкажіть номер телефону у форматі 0XXXXXXXXX або +380XXXXXXXXX.";
     if (
       "message" in fields &&
       (fields.message.trim().length < 10 || fields.message.trim().length > 1500)
@@ -184,9 +185,9 @@
         "Повідомлення має містити від 10 до 1500 символів, не лише пробіли.";
     if (
       "address" in fields &&
-      (fields.address.trim().length < 10 || fields.address.trim().length > 200)
+      (fields.address.trim().length < 5 || fields.address.trim().length > 200)
     )
-      errors.address = "Адреса має містити від 10 до 200 символів.";
+      errors.address = "Адреса має містити від 5 до 200 символів.";
     return errors;
   }
   return {

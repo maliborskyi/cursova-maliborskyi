@@ -175,10 +175,15 @@
       input.name = name;
       input.required = true;
       input.maxLength = max;
-      input.minLength = name === "name" ? 2 : name === "email" ? 1 : 10;
+      input.minLength =
+        name === "name" ? 2 : name === "email" ? 1 : name === "address" ? 5 : 10;
       if (name !== "message")
         input.autocomplete =
-          name === "address" ? "street-address" : name === "phone" ? "tel" : name;
+          name === "address"
+            ? "street-address"
+            : name === "phone"
+              ? "tel"
+              : name;
       if (name === "phone") input.placeholder = "+380XXXXXXXXX";
       const error = el("p", "field-error");
       error.id = `${id}-error`;
