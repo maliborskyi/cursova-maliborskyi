@@ -129,48 +129,48 @@
                 <div class="filter-group">
                     <h3>Ціни</h3>
                     <ul class="price-list">
-                        <li><button type="button">$0-$50</button></li>
-                        <li><button type="button">$50-$100</button></li>
-                        <li><button type="button">$100-$150</button></li>
-                        <li><button type="button">$150-$200</button></li>
-                        <li><button type="button">$300-$400</button></li>
+                        <li><button type="button" aria-disabled="true" title="Цей елемент поки не виконує фільтрацію">$0-$50</button></li>
+                        <li><button type="button" aria-disabled="true" title="Цей елемент поки не виконує фільтрацію">$50-$100</button></li>
+                        <li><button type="button" aria-disabled="true" title="Цей елемент поки не виконує фільтрацію">$100-$150</button></li>
+                        <li><button type="button" aria-disabled="true" title="Цей елемент поки не виконує фільтрацію">$150-$200</button></li>
+                        <li><button type="button" aria-disabled="true" title="Цей елемент поки не виконує фільтрацію">$300-$400</button></li>
                     </ul>
                 </div>
 
                 <div class="filter-group collapsible">
                     <h3>Бренди</h3>
                     <ul class="brand-list">
-                        <li><button type="button">Minimog</button></li>
-                        <li><button type="button">Retrolie Brook</button></li>
-                        <li><button type="button">Learts</button></li>
-                        <li><button type="button">Vagabond</button></li>
-                        <li><button type="button">Abby</button></li>
+                        <li><button type="button" aria-disabled="true" title="Цей елемент поки не виконує фільтрацію">Minimog</button></li>
+                        <li><button type="button" aria-disabled="true" title="Цей елемент поки не виконує фільтрацію">Retrolie Brook</button></li>
+                        <li><button type="button" aria-disabled="true" title="Цей елемент поки не виконує фільтрацію">Learts</button></li>
+                        <li><button type="button" aria-disabled="true" title="Цей елемент поки не виконує фільтрацію">Vagabond</button></li>
+                        <li><button type="button" aria-disabled="true" title="Цей елемент поки не виконує фільтрацію">Abby</button></li>
                     </ul>
                 </div>
 
                 <div class="filter-group collapsible">
                     <h3>Колекції</h3>
                     <ul class="collection-list">
-                        <li><button type="button">Всі товари</button></li>
-                        <li><button type="button">Бестселери</button></li>
-                        <li><button type="button">Новинки</button></li>
-                        <li><button type="button">Аксесуари</button></li>
+                        <li><button type="button" aria-disabled="true" title="Цей елемент поки не виконує фільтрацію">Всі товари</button></li>
+                        <li><button type="button" aria-disabled="true" title="Цей елемент поки не виконує фільтрацію">Бестселери</button></li>
+                        <li><button type="button" aria-disabled="true" title="Цей елемент поки не виконує фільтрацію">Новинки</button></li>
+                        <li><button type="button" aria-disabled="true" title="Цей елемент поки не виконує фільтрацію">Аксесуари</button></li>
                     </ul>
                 </div>
                 <div class="filter-group">
                     <h3>Теги</h3>
                     <ul class="tags-list">
-                        <li><button type="button">Мода</button></li>
-                        <li><button type="button">Капелюхи</button></li>
-                        <li><button type="button">Сандалі</button></li>
-                        <li><button type="button">Ремені</button></li>
-                        <li><button type="button">Сумки</button></li>
-                        <li><button type="button">Кросівки</button></li>
-                        <li><button type="button">Денім</button></li>
-                        <li><button type="button">Minimog</button></li>
-                        <li><button type="button">Vagabond</button></li>
-                        <li><button type="button">Окуляри</button></li>
-                        <li><button type="button">Пляжний одяг</button></li>
+                        <li><button type="button" aria-disabled="true" title="Цей елемент поки не виконує фільтрацію">Мода</button></li>
+                        <li><button type="button" aria-disabled="true" title="Цей елемент поки не виконує фільтрацію">Капелюхи</button></li>
+                        <li><button type="button" aria-disabled="true" title="Цей елемент поки не виконує фільтрацію">Сандалі</button></li>
+                        <li><button type="button" aria-disabled="true" title="Цей елемент поки не виконує фільтрацію">Ремені</button></li>
+                        <li><button type="button" aria-disabled="true" title="Цей елемент поки не виконує фільтрацію">Сумки</button></li>
+                        <li><button type="button" aria-disabled="true" title="Цей елемент поки не виконує фільтрацію">Кросівки</button></li>
+                        <li><button type="button" aria-disabled="true" title="Цей елемент поки не виконує фільтрацію">Денім</button></li>
+                        <li><button type="button" aria-disabled="true" title="Цей елемент поки не виконує фільтрацію">Minimog</button></li>
+                        <li><button type="button" aria-disabled="true" title="Цей елемент поки не виконує фільтрацію">Vagabond</button></li>
+                        <li><button type="button" aria-disabled="true" title="Цей елемент поки не виконує фільтрацію">Окуляри</button></li>
+                        <li><button type="button" aria-disabled="true" title="Цей елемент поки не виконує фільтрацію">Пляжний одяг</button></li>
                     </ul>
                 </div>
             </aside>
@@ -223,11 +223,12 @@
                     </div>
                 </div>
 
-                <div class="products-grid" id="product-grid">
+                <template id="product-card-template">
                     <article class="product-card">
                         <div class="product-image-wrap">
-                            <img src="assets/images/shop/shop-red-hat.webp" alt="Червоний жіночий капелюх"
-                                loading="lazy">
+                            <a href="product-page.html"><img src="assets/images/shop/shop-red-hat.webp" alt="Червоний жіночий капелюх"
+                                loading="lazy"></a>
+                            <span class="sold-out-badge" hidden>РОЗПРОДАНО</span>
                         </div>
                         <div class="product-info">
                             <h3 class="product-title">Червоний капелюх</h3>
@@ -238,142 +239,9 @@
                             </div>
                         </div>
                     </article>
-
-                    <article class="product-card">
-                        <div class="product-image-wrap sold-out-wrap">
-                            <img src="assets/images/shop/shop-black-shirt.webp" alt="Чорна жіноча сорочка"
-                                loading="lazy">
-                            <span class="sold-out-badge">РОЗПРОДАНО</span>
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Лляна сорочка</h3>
-                            <p class="product-price">$17.00</p>
-                            <div class="product-colors">
-                                <span class="color-dot product-2-color-1 is-selected"></span>
-                                <span class="color-dot product-2-color-2"></span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="product-card">
-                        <div class="product-image-wrap">
-                            <img src="assets/images/shop/shop-long-coat.webp" alt="Жіночий чорний жакет" loading="lazy">
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Жакет із довгими рукавами</h3>
-                            <p class="product-price">$106.00</p>
-                            <div class="product-colors">
-                                <span class="color-dot product-3-color-1 is-selected"></span>
-                                <span class="color-dot product-3-color-2"></span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="product-card">
-                        <div class="product-image-wrap">
-                            <img src="assets/images/shop/shop-denim-hat.webp" alt="Темно-синій капелюх" loading="lazy">
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Синій капелюх</h3>
-                            <p class="product-price">$25.00</p>
-                            <div class="product-colors">
-                                <span class="color-dot product-4-color-1 is-selected"></span>
-                                <span class="color-dot product-4-color-2"></span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="product-card">
-                        <div class="product-image-wrap">
-                            <img src="assets/images/shop/shop-black-top.webp" alt="Чорний жіночий топ" loading="lazy">
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Чорний топ</h3>
-                            <p class="product-price">$25.00</p>
-                            <div class="product-colors">
-                                <span class="color-dot product-5-color-1 is-selected"></span>
-                                <span class="color-dot product-5-color-2">
-                                    <img src="assets/images/shop/shop-plaid-cloth.webp"
-                                        alt="Картатий візерунок">
-                                </span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="product-card">
-                        <div class="product-image-wrap"><a href="product-page.html" aria-label="Переглянути червону вітровку">
-                            <img src="assets/images/shop/shop-red-jacket.webp" alt="Червона вітровка"
-                                loading="lazy"></a>
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title"><a href="product-page.html">Червона вітровка</a></h3>
-                            <p class="product-price">
-                                $39.00 <del>$59.00</del>
-                            </p>
-                            <div class="product-colors">
-                                <span class="color-dot product-6-color-1 is-selected"></span>
-                                <span class="color-dot product-6-color-2"></span>
-                                <span class="color-dot product-6-color-3"></span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="product-card">
-                        <div class="product-image-wrap">
-                            <img src="assets/images/shop/shop-sunglasses.webp" alt="Сонцезахисні окуляри"
-                                loading="lazy">
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Поляризаційні окуляри</h3>
-                            <p class="product-price">
-                                $18.00 <del>$21.00</del>
-                            </p>
-                            <div class="product-colors">
-                                <span class="color-dot product-7-color-1 is-selected"></span>
-                                <span class="color-dot product-7-color-2"></span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="product-card">
-                        <div class="product-image-wrap">
-                            <img src="assets/images/shop/shop-black-jacket.webp" alt="Чорна жіноча куртка"
-                                loading="lazy">
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Куртка Rockstar</h3>
-                            <p class="product-price">$22.00</p>
-                            <div class="product-colors">
-                                <span class="color-dot product-8-color-1 is-selected"></span>
-                                <span class="color-dot product-8-color-2"></span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="product-card">
-                        <div class="product-image-wrap">
-                            <img src="assets/images/shop/shop-dot-dress.webp" alt="Чорна сукня в горошок"
-                                loading="lazy">
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Чорна сукня в горошок</h3>
-                            <p class="product-price">$20.00</p>
-                            <div class="product-colors">
-                                <span class="color-dot product-9-color-1 is-selected"></span>
-                                <span class="color-dot product-9-color-2"></span>
-                                <span class="color-dot product-9-color-3"></span>
-                            </div>
-                        </div>
-                    </article>
-                </div>
+                </template>
+                <div class="products-grid" id="product-grid"></div>
             </div>
-
-                <nav class="catalog-pagination" aria-label="Сторінки каталогу">
-                    <span class="page-number active" aria-current="page">1</span>
-                    <span class="page-number">2</span>
-                    <span class="page-number">3</span>
-                    <span class="page-number">&raquo;</span>
-                </nav>
             </section>
 
             <section class="peaky-section">

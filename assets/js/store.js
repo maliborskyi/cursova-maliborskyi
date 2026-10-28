@@ -14,7 +14,7 @@
     green: ["зелений", "#bedfc1"],
     yellow: ["жовтий", "#ffd32a"],
     white: ["білий", "#f5f5f5"],
-    beige: ["бежевий", "#f0efec"],
+    beige: ["світло-сірий", "#f0efec"],
     purple: ["бузковий", "#c5aacd"],
     brown: ["коричневий", "#877665"],
     grey: ["сірий", "#d9e1e7"],
@@ -22,146 +22,51 @@
     pattern: ["картатий візерунок", null],
   };
 
-  // Візерунок доступний як варіант товару, але не входить до фільтра кольорів
-  const filterColors = Object.keys(colors).filter((key) => key !== "pattern");
-  // Дані товарів: код, назва, ціна, категорія, фото, опис фото, кольори, бренд, теги, розміри та колекція
-  const rows = [
-    [
-      "red-hat",
-      "Червоний капелюх",
-      800,
-      "Капелюхи",
-      "shop-red-hat",
-      "Червоний жіночий капелюх",
-      ["yellow", "black"],
-      "Minimog",
-      ["Мода", "Капелюхи"],
-      ["S", "M"],
-      "Аксесуари",
-    ],
-    [
-      "linen-shirt",
-      "Лляна сорочка",
-      1700,
-      "Сорочки",
-      "shop-black-shirt",
-      "Чорна жіноча сорочка",
-      ["sky", "pink"],
-      "Retrolie Brook",
-      ["Мода"],
-      ["S", "M", "L"],
-      "Новинки",
-    ],
-    [
-      "long-jacket",
-      "Жакет із довгими рукавами",
-      10600,
-      "Верхній одяг",
-      "shop-long-coat",
-      "Жіночий чорний жакет",
-      ["beige", "green"],
-      "Learts",
-      ["Мода"],
-      ["M", "L", "XL"],
-      "Бестселери",
-    ],
-    [
-      "blue-hat",
-      "Синій капелюх",
-      2500,
-      "Капелюхи",
-      "shop-denim-hat",
-      "Темно-синій капелюх",
-      ["sky", "blue"],
-      "Vagabond",
-      ["Капелюхи", "Денім", "Vagabond"],
-      ["S", "M"],
-      "Аксесуари",
-    ],
-    [
-      "black-top",
-      "Чорний топ",
-      2500,
-      "Топи",
-      "shop-black-top",
-      "Чорний жіночий топ",
-      ["green", "pattern"],
-      "Abby",
-      ["Мода"],
-      ["S", "M", "L"],
-      "Новинки",
-    ],
-    [
-      "red-jacket",
-      "Червона вітровка",
-      3900,
-      "Верхній одяг",
-      "shop-red-jacket",
-      "Червона вітровка",
-      ["red", "purple", "white"],
-      "Minimog",
-      ["Мода", "Minimog"],
-      ["M", "L", "XL", "XXL"],
-      "Бестселери",
-    ],
-    [
-      "sunglasses",
-      "Поляризаційні окуляри",
-      1800,
-      "Окуляри",
-      "shop-sunglasses",
-      "Сонцезахисні окуляри",
-      ["black", "brown"],
-      "Learts",
-      ["Окуляри", "Пляжний одяг"],
-      ["M"],
-      "Аксесуари",
-    ],
-    [
-      "rockstar-jacket",
-      "Куртка Rockstar",
-      2200,
-      "Верхній одяг",
-      "shop-black-jacket",
-      "Чорна жіноча куртка",
-      ["purple", "sky"],
-      "Retrolie Brook",
-      ["Мода"],
-      ["S", "M", "L", "XL"],
-      "Новинки",
-    ],
-    [
-      "dot-dress",
-      "Чорна сукня в горошок",
-      2000,
-      "Сукні",
-      "shop-dot-dress",
-      "Чорна сукня в горошок",
-      ["blue", "black", "grey"],
-      "Abby",
-      ["Мода"],
-      ["S", "M", "L"],
-      "Бестселери",
-    ],
-  ];
+  const colorNames = Object.keys(colors).filter((key) => key !== "pattern");
+  const products = [];
 
-  // Перетворюємо рядки даних на об’єкти товарів із потрібними властивостями
-  const products = rows.map((r, i) => ({
-    id: r[0],
-    name: r[1],
-    price: r[2],
-    category: r[3],
-    image: `assets/images/shop/${r[4]}.webp`,
-    alt: r[5],
-    colors: r[6],
-    brand: r[7],
-    tags: r[8],
-    sizes: r[9],
-    collection: r[10],
-    soldOut: i === 1,
-    oldPrice: i === 5 ? 5900 : i === 6 ? 2100 : null,
-    rank: i,
-  }));
+  async function loadProducts() {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 10000);
+    try {
+      const response = await fetch("assets/data/products.json", {
+        signal: controller.signal,
+      });
+      if (!response.ok) throw new Error("Не вдалося завантажити товари.");
+      const data = await response.json();
+      if (
+        !Array.isArray(data) ||
+        new Set(data.map((p) => p?.id)).size !== data.length ||
+        data.some(
+          (p) =>
+            !p ||
+            typeof p.id !== "string" ||
+            !p.id ||
+            typeof p.name !== "string" ||
+            !p.name.trim() ||
+            !Number.isInteger(p.price) ||
+            p.price < 0 ||
+            typeof p.image !== "string" ||
+            !p.image ||
+            typeof p.alt !== "string" ||
+            !Array.isArray(p.sizes) ||
+            !p.sizes.length ||
+            p.sizes.some((size) => typeof size !== "string" || !size) ||
+            !Array.isArray(p.colors) ||
+            !p.colors.length ||
+            p.colors.some((color) => !Object.hasOwn(colors, color)) ||
+            typeof p.soldOut !== "boolean" ||
+            (p.oldPrice != null &&
+              (!Number.isInteger(p.oldPrice) || p.oldPrice < 0)),
+        )
+      )
+        throw new Error("Некоректні дані товарів.");
+      products.splice(0, products.length, ...data);
+      return products;
+    } finally {
+      clearTimeout(timeout);
+    }
+  }
 
   // Назва запису, під якою кошик зберігається у localStorage
   const KEY = "fasco.cart.v1";
@@ -251,34 +156,6 @@
     };
   }
 
-  // Відбирає товари за пошуком і фільтрами, а потім сортує результат
-  function query(source, filters = {}) {
-    const q = (filters.q || "").trim().toLocaleLowerCase("uk");
-    const found = source.filter(
-      (p) =>
-        (!q ||
-          `${p.name} ${p.category} ${p.brand}`
-            .toLocaleLowerCase("uk")
-            .includes(q)) &&
-        (!filters.size || p.sizes.includes(filters.size)) &&
-        (!filters.color || p.colors.includes(filters.color)) &&
-        (!filters.brand || p.brand === filters.brand) &&
-        (!filters.collection || p.collection === filters.collection) &&
-        (!filters.tag || p.tags.includes(filters.tag)) &&
-        (!filters.price ||
-          (p.price >= filters.price[0] && p.price < filters.price[1])),
-    );
-    return found.sort((a, b) =>
-      filters.sort === "price-asc"
-        ? a.price - b.price
-        : filters.sort === "price-desc"
-          ? b.price - a.price
-          : filters.sort === "name"
-            ? a.name.localeCompare(b.name, "uk")
-            : a.rank - b.rank,
-    );
-  }
-
   // Перевіряє поля форми та повертає повідомлення про знайдені помилки
   function validate(fields) {
     const errors = {};
@@ -293,6 +170,12 @@
         !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fields.email.trim()))
     )
       errors.email = "Вкажіть коректний email, наприклад name@example.com.";
+    if (
+      "phone" in fields &&
+      (fields.phone.trim().length > 30 ||
+        !/^(?:\+?38)?0\d{9}$/.test(fields.phone.replace(/[\s()-]/g, "")))
+    )
+      errors.phone = "Вкажіть номер телефону у форматі 0XXXXXXXXX або +380XXXXXXXXX.";
     if (
       "message" in fields &&
       (fields.message.trim().length < 10 || fields.message.trim().length > 1500)
@@ -309,7 +192,8 @@
   return {
     products,
     colors,
-    filterColors,
+    colorNames,
+    loadProducts,
     KEY,
     product,
     quantity,
@@ -319,7 +203,6 @@
     save,
     add,
     totals,
-    query,
     validate,
   };
 });

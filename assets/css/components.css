@@ -248,6 +248,20 @@ body:has(.fasco-dialog[open]) {
   border-radius: 5px;
   padding: 8px 12px;
   margin-top: 12px;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.filter-reset:hover,
+.filter-reset:focus-visible {
+  background: #484848;
+  color: #fff;
+}
+
+.filter-reset:active {
+  transform: scale(0.97);
 }
 
 .filters-sidebar li button {
@@ -794,6 +808,10 @@ body img.image-fallback {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .filter-reset {
+    transition: none;
+  }
+
   .menu-button,
   .menu-button::before,
   .menu-button::after {
@@ -803,4 +821,40 @@ body img.image-fallback {
   html {
     scroll-behavior: auto;
   }
+}
+
+#product-grid[hidden],
+.product-section[hidden],
+.cart-content[hidden],
+.data-status[hidden] {
+  display: none;
+}
+
+.data-status {
+  color: #484848;
+  font-family: "Noto Sans", Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  padding: 16px;
+}
+
+.data-status p {
+  margin: 0 0 12px;
+}
+
+.catalog-result.data-status {
+  padding: 0;
+}
+
+.data-retry {
+  background: #000;
+  color: #fff;
+  border: 1px solid #000;
+  border-radius: 5px;
+  padding: 10px 16px;
+  font: inherit;
+}
+
+.filters-sidebar button[aria-disabled="true"] {
+  cursor: default;
 }

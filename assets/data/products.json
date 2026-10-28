@@ -1,0 +1,173 @@
+[
+  {
+    "id": "red-hat",
+    "name": "Червоний капелюх",
+    "price": 800,
+    "category": "Капелюхи",
+    "image": "assets/images/shop/shop-red-hat.webp",
+    "alt": "Червоний жіночий капелюх",
+    "colors": [
+      "yellow",
+      "black"
+    ],
+    "sizes": [
+      "S",
+      "M"
+    ],
+    "soldOut": false,
+    "oldPrice": null
+  },
+  {
+    "id": "linen-shirt",
+    "name": "Лляна сорочка",
+    "price": 1700,
+    "category": "Сорочки",
+    "image": "assets/images/shop/shop-black-shirt.webp",
+    "alt": "Чорна жіноча сорочка",
+    "colors": [
+      "sky",
+      "pink"
+    ],
+    "sizes": [
+      "S",
+      "M",
+      "L"
+    ],
+    "soldOut": true,
+    "oldPrice": null
+  },
+  {
+    "id": "long-jacket",
+    "name": "Жакет із довгими рукавами",
+    "price": 10600,
+    "category": "Верхній одяг",
+    "image": "assets/images/shop/shop-long-coat.webp",
+    "alt": "Жіночий чорний жакет",
+    "colors": [
+      "beige",
+      "green"
+    ],
+    "sizes": [
+      "M",
+      "L",
+      "XL"
+    ],
+    "soldOut": false,
+    "oldPrice": null
+  },
+  {
+    "id": "blue-hat",
+    "name": "Синій капелюх",
+    "price": 2500,
+    "category": "Капелюхи",
+    "image": "assets/images/shop/shop-denim-hat.webp",
+    "alt": "Темно-синій капелюх",
+    "colors": [
+      "sky",
+      "blue"
+    ],
+    "sizes": [
+      "S",
+      "M"
+    ],
+    "soldOut": false,
+    "oldPrice": null
+  },
+  {
+    "id": "black-top",
+    "name": "Чорний топ",
+    "price": 2500,
+    "category": "Топи",
+    "image": "assets/images/shop/shop-black-top.webp",
+    "alt": "Чорний жіночий топ",
+    "colors": [
+      "green",
+      "pattern"
+    ],
+    "sizes": [
+      "S",
+      "M",
+      "L"
+    ],
+    "soldOut": false,
+    "oldPrice": null
+  },
+  {
+    "id": "red-jacket",
+    "name": "Червона вітровка",
+    "price": 3900,
+    "category": "Верхній одяг",
+    "image": "assets/images/shop/shop-red-jacket.webp",
+    "alt": "Червона вітровка",
+    "colors": [
+      "red",
+      "purple",
+      "white"
+    ],
+    "sizes": [
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "soldOut": false,
+    "oldPrice": 5900
+  },
+  {
+    "id": "sunglasses",
+    "name": "Поляризаційні окуляри",
+    "price": 1800,
+    "category": "Окуляри",
+    "image": "assets/images/shop/shop-sunglasses.webp",
+    "alt": "Сонцезахисні окуляри",
+    "colors": [
+      "black",
+      "brown"
+    ],
+    "sizes": [
+      "M"
+    ],
+    "soldOut": false,
+    "oldPrice": 2100
+  },
+  {
+    "id": "rockstar-jacket",
+    "name": "Куртка Rockstar",
+    "price": 2200,
+    "category": "Верхній одяг",
+    "image": "assets/images/shop/shop-black-jacket.webp",
+    "alt": "Чорна жіноча куртка",
+    "colors": [
+      "purple",
+      "sky"
+    ],
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "soldOut": false,
+    "oldPrice": null
+  },
+  {
+    "id": "dot-dress",
+    "name": "Чорна сукня в горошок",
+    "price": 2000,
+    "category": "Сукні",
+    "image": "assets/images/shop/shop-dot-dress.webp",
+    "alt": "Чорна сукня в горошок",
+    "colors": [
+      "blue",
+      "black",
+      "grey"
+    ],
+    "sizes": [
+      "S",
+      "M",
+      "L"
+    ],
+    "soldOut": false,
+    "oldPrice": null
+  }
+]

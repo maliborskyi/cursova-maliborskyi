@@ -1,5 +1,5 @@
 // Інтерактивні компоненти сторінок: меню, форми, каталог, слайдери та кошик
-(() => {
+(async () => {
   "use strict";
   const S = window.FascoStore;
   const $ = (s, r = document) => r.querySelector(s),
@@ -72,10 +72,12 @@
   } catch {
     storage = null;
   }
-  let cart = S.read(storage);
+  let dataLoaded = false;
+  let cart = S.cleanCart(null);
 
   // Зберігає зміни кошика та оновлює його на сторінці
   function commit(next) {
+    if (!dataLoaded) return false;
     cart = S.cleanCart(next);
     const saved = S.save(storage, cart);
     if (!saved)
@@ -87,7 +89,7 @@
   }
   // Оновлюємо кошик, якщо його змінили в іншій вкладці браузера
   window.addEventListener("storage", (e) => {
-    if (e.key === S.KEY || e.key === null) {
+    if (dataLoaded && (e.key === S.KEY || e.key === null)) {
       cart = S.read(storage);
       renderCart();
     }
@@ -159,6 +161,7 @@
         : [
             ["name", "Ім’я", "text", 80],
             ["email", "Email", "email", 254],
+            ["phone", "Номер телефону", "tel", 30],
             ["address", "Адреса доставки", "text", 200],
           ];
     fields.forEach(([name, label, type, max]) => {
@@ -174,7 +177,9 @@
       input.maxLength = max;
       input.minLength = name === "name" ? 2 : name === "email" ? 1 : 10;
       if (name !== "message")
-        input.autocomplete = name === "address" ? "street-address" : name;
+        input.autocomplete =
+          name === "address" ? "street-address" : name === "phone" ? "tel" : name;
+      if (name === "phone") input.placeholder = "+380XXXXXXXXX";
       const error = el("p", "field-error");
       error.id = `${id}-error`;
       input.setAttribute("aria-describedby", error.id);
@@ -185,18 +190,10 @@
       row.append(lab, input, error);
       form.append(row);
     });
-    if (kind === "checkout")
-      form.append(
-        el(
-          "p",
-          "demo-note",
-          "Демонстраційне оформлення без платежів. Замовлення не передається на сервер.",
-        ),
-      );
     const status = el("p", "form-status");
     status.setAttribute("role", "status");
     const submit = button(
-      kind === "question" ? "Підтвердити запит" : "Перевірити замовлення",
+      kind === "question" ? "Підтвердити запит" : "Оформити замовлення",
       "fasco-primary",
     );
     submit.type = "submit";
@@ -224,7 +221,7 @@
       status.textContent =
         kind === "question"
           ? "Дані перевірено локально. Це демонстрація: повідомлення не надіслано."
-          : `Дані перевірено. Сума ${money(S.totals(cart).total)}. Це демонстрація: замовлення не створено, платіж не здійснювався.`;
+          : `Дані перевірено. Сума ${money(S.totals(cart).total)}.`;
     });
     return form;
   }
@@ -276,139 +273,173 @@
     });
   }
 
-  // Пошук, фільтри та сортування товарів у каталозі
-  const grid = $("#product-grid");
-  if (grid) {
-    const originalCards = $$(".product-card", grid),
-      defaultCard = originalCards[0].cloneNode(true);
-    const templates = new Map(
-      S.products
-        .slice(0, originalCards.length)
-        .map((p, i) => [p.id, originalCards[i].cloneNode(true)]),
-    );
-    const filters = {
-        q: new URLSearchParams(location.search).get("q") || "",
-        sort: "default",
-      },
-      search = $("#product-search");
-    search.value = filters.q;
-    const select = el("select", "fasco-sort");
-    select.setAttribute("aria-label", "Сортувати товари");
-    [
-      ["default", "Найкращі продажі"],
-      ["price-asc", "Ціна: за зростанням"],
-      ["price-desc", "Ціна: за спаданням"],
-      ["name", "За назвою"],
-    ].forEach(([v, t]) => {
-      const o = el("option", "", t);
-      o.value = v;
-      select.append(o);
+  $$(".search-control").forEach((search) => {
+    const toggle = $(".search-toggle", search);
+    const closeSearch = () => {
+      if (toggle) toggle.checked = false;
+      else search.open = false;
+    };
+    document.addEventListener("click", (e) => {
+      if (!search.contains(e.target)) closeSearch();
     });
-    $(".sorting-dropdown").replaceChildren(select);
-    const summary = el("p", "catalog-result");
-    summary.setAttribute("role", "status");
-    $(".catalog-toolbar").after(summary);
-    let page = 1;
-    const pageSize = 9,
-      pagination = $(".catalog-pagination");
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && (toggle ? toggle.checked : search.open)) {
+        closeSearch();
+        ($("summary", search) || toggle).focus();
+      }
+    });
+  });
+
+  const grid = $("#product-grid");
+  const dataSection = $(".product-section") || $(".cart-content");
+  const dataStatus = el(
+    "div",
+    grid ? "catalog-result data-status" : "data-status",
+    "Завантаження товарів…",
+  );
+  dataStatus.setAttribute("role", "status");
+  if (grid) {
+    $(".catalog-toolbar").after(dataStatus);
+    grid.hidden = true;
+  } else if (dataSection) {
+    dataSection.before(dataStatus);
+  } else {
+    $("main").prepend(dataStatus);
+  }
+  if (dataSection) dataSection.hidden = true;
+  try {
+    await S.loadProducts();
+    dataLoaded = true;
+    cart = S.read(storage);
+    if (!dataSection) dataStatus.hidden = true;
+    if (grid) grid.hidden = false;
+  } catch {
+    dataStatus.setAttribute("role", "alert");
+    dataStatus.replaceChildren(
+      el(
+        "p",
+        "",
+        "Не вдалося завантажити товари. Перевірте з’єднання та спробуйте ще раз.",
+      ),
+      button("Спробувати ще раз", "data-retry", () => location.reload()),
+    );
+  }
+
+  if (grid) {
+    const template = $("#product-card-template").content.firstElementChild;
+    const summary = dataStatus;
+    const colorBox = $(".filters-sidebar .color-options");
+    colorBox.replaceChildren();
+    S.colorNames.forEach((value) => {
+      const [label, hex] = S.colors[value];
+      const dot = el("button", "color-dot");
+      dot.type = "button";
+      dot.dataset.color = value;
+      dot.setAttribute("aria-label", label);
+      dot.title = label;
+      dot.style.backgroundColor = hex;
+      colorBox.append(dot);
+    });
+
+    const search = $("#product-search");
+    const sort = el("select", "fasco-sort");
+    sort.setAttribute("aria-label", "Сортувати товари");
+    [
+      ["default", "Початковий порядок"],
+      ["asc", "Ціна: за зростанням"],
+      ["desc", "Ціна: за спаданням"],
+    ].forEach(([value, text]) => {
+      const option = el("option", "", text);
+      option.value = value;
+      sort.append(option);
+    });
+    $(".sorting-dropdown").replaceChildren(sort);
+    let selectedSize = "";
+    let selectedColor = "";
+    let selectedPrice = null;
+    const sizes = $$(".filters-sidebar .size-btn");
+    const colors = $$(".filters-sidebar .color-options button");
+    const prices = $$(".filters-sidebar .price-list button");
+    function choose(nodes, node) {
+      const active = node.getAttribute("aria-pressed") !== "true";
+      nodes.forEach((button) => button.setAttribute("aria-pressed", "false"));
+      node.setAttribute("aria-pressed", String(active));
+      return active;
+    }
+    sizes.forEach((node) => {
+      node.setAttribute("aria-pressed", "false");
+      node.addEventListener("click", () => {
+        selectedSize = choose(sizes, node) ? node.textContent.trim() : "";
+        render();
+      });
+    });
+    colors.forEach((node) => {
+      node.setAttribute("aria-pressed", "false");
+      node.addEventListener("click", () => {
+        selectedColor = choose(colors, node) ? node.dataset.color : "";
+        render();
+      });
+    });
+    prices.forEach((node) => {
+      node.removeAttribute("aria-disabled");
+      node.removeAttribute("title");
+      node.setAttribute("aria-pressed", "false");
+      const range = node.textContent
+        .match(/\d+/g)
+        .map((value) => Number(value) * 100);
+      node.addEventListener("click", () => {
+        selectedPrice = choose(prices, node) ? range : null;
+        render();
+      });
+    });
     const reset = button("Скинути фільтри", "filter-reset", () => {
-      Object.keys(filters).forEach((k) => delete filters[k]);
-      filters.q = "";
-      filters.sort = "default";
       search.value = "";
-      select.value = "default";
-      page = 1;
-      $$(".filters-sidebar [aria-pressed]").forEach((b) =>
-        b.setAttribute("aria-pressed", "false"),
+      selectedSize = "";
+      selectedColor = "";
+      selectedPrice = null;
+      sort.value = "default";
+      [...sizes, ...colors, ...prices].forEach((node) =>
+        node.setAttribute("aria-pressed", "false"),
       );
       render();
     });
     $(".filters-sidebar").append(reset);
-    // Створює кнопку фільтра та застосовує або скидає вибрану умову
-    function filterButton(node, key, value) {
-      const b = button(node.textContent, node.className);
-      if (node.classList.contains("color-dot")) b.textContent = "";
-      b.setAttribute(
-        "aria-label",
-        key === "color" ? `Колір: ${S.colors[value][0]}` : node.textContent,
-      );
-      b.setAttribute("aria-pressed", "false");
-      b.dataset.filter = key;
-      b.addEventListener("click", () => {
-        const active = b.getAttribute("aria-pressed") !== "true";
-        $$(`[data-filter="${key}"]`).forEach((n) =>
-          n.setAttribute("aria-pressed", "false"),
-        );
-        b.setAttribute("aria-pressed", String(active));
-        filters[key] = active ? value : null;
-        page = 1;
-        render();
-      });
-      node.replaceWith(b);
-      return b;
-    }
-    $$(".filters-sidebar .size-btn").forEach((n) =>
-      filterButton(n, "size", n.textContent.trim()),
-    );
-    const colorBox = $(".filters-sidebar .color-options");
-    colorBox.replaceChildren();
-    S.filterColors.forEach((value) => {
-      const [label, hex] = S.colors[value];
-      const n = el("span", "color-dot", label);
-      colorBox.append(n);
-      const b = filterButton(n, "color", value);
-      b.style.backgroundColor = hex;
-      b.title = label;
-    });
-    $$(".price-list a,.price-list button").forEach((n) =>
-      filterButton(
-        n,
-        "price",
-        n.textContent.match(/\d+/g).map((v) => Number(v) * 100),
-      ),
-    );
-    $$(".brand-list a,.brand-list button").forEach((n) =>
-      filterButton(n, "brand", n.textContent.trim()),
-    );
-    $$(".collection-list a,.collection-list button").forEach((n, i) =>
-      filterButton(n, "collection", i === 0 ? null : n.textContent.trim()),
-    );
-    $$(".tags-list a,.tags-list button").forEach((n) => {
-      const v = n.textContent.trim();
-      if (S.products.some((p) => p.tags.includes(v))) filterButton(n, "tag", v);
-      else n.closest("li").remove();
-    });
-    // Виводить картки, кількість результатів і кнопки сторінок
+    search.addEventListener("input", render);
+    sort.addEventListener("change", render);
+
     function render() {
-      const found = S.query(S.products, filters),
-        pages = Math.max(1, Math.ceil(found.length / pageSize));
-      page = Math.min(page, pages);
-      summary.textContent = `Знайдено товарів: ${found.length}. Сторінка ${page} з ${pages}.`;
+      if (!dataLoaded) return;
+
+      const name = search.value.trim().toLocaleLowerCase("uk");
+      const found = S.products.filter(
+        (p) =>
+          p.name.toLocaleLowerCase("uk").includes(name) &&
+          (!selectedSize || p.sizes.includes(selectedSize)) &&
+          (!selectedColor || p.colors.includes(selectedColor)) &&
+          (!selectedPrice ||
+            (p.price >= selectedPrice[0] && p.price < selectedPrice[1])),
+      );
+      if (sort.value === "asc") found.sort((a, b) => a.price - b.price);
+      if (sort.value === "desc") found.sort((a, b) => b.price - a.price);
+
+      summary.hidden = false;
+      summary.textContent = "Товарів у каталозі: " + found.length + ".";
       grid.replaceChildren();
-      found.slice((page - 1) * pageSize, page * pageSize).forEach((p) => {
-        const card = (templates.get(p.id) || defaultCard).cloneNode(true);
+      found.forEach((p) => {
+        const card = template.cloneNode(true);
         card.dataset.productId = p.id;
         const url = new URL("product-page.html", location.href);
         url.searchParams.set("id", p.id);
-        if (filters.color && p.colors.includes(filters.color))
-          url.searchParams.set("color", filters.color);
-        if (filters.size && p.sizes.includes(filters.size))
-          url.searchParams.set("size", filters.size);
+        if (selectedColor) url.searchParams.set("color", selectedColor);
+        if (selectedSize) url.searchParams.set("size", selectedSize);
         const productUrl = url.href;
         const image = $(".product-image-wrap img", card);
         image.src = p.image;
         image.alt = p.alt;
         fallback(image);
-        const imageWrap = $(".product-image-wrap", card),
-          oldLink = $("a", imageWrap);
-        if (oldLink) {
-          oldLink.href = productUrl;
-          oldLink.setAttribute("aria-label", `Переглянути: ${p.name}`);
-        } else {
-          const a = link("", productUrl);
-          image.replaceWith(a);
-          a.append(image);
-        }
+        const imageLink = $(".product-image-wrap a", card);
+        imageLink.href = productUrl;
+        imageLink.setAttribute("aria-label", `Переглянути: ${p.name}`);
         $(".product-title", card).replaceChildren(link(p.name, productUrl));
         const price = $(".product-price", card);
         price.replaceChildren(document.createTextNode(money(p.price)));
@@ -417,19 +448,14 @@
             document.createTextNode(" "),
             el("del", "", money(p.oldPrice)),
           );
-        const badge = $(".sold-out-badge", card);
-        if (badge && !p.soldOut) badge.remove();
-        if (p.soldOut && !badge)
-          imageWrap.append(el("span", "sold-out-badge", "РОЗПРОДАНО"));
+        $(".sold-out-badge", card).hidden = !p.soldOut;
         const samples = $(".product-colors", card);
-        const originalSamples = $$(".color-dot", samples);
         samples.replaceChildren();
-        p.colors.forEach((value, i) => {
-          const dot =
-            originalSamples[i]?.cloneNode(false) || el("span", "color-dot");
+        p.colors.forEach((value) => {
+          const dot = el("span", "color-dot");
           dot.classList.toggle(
             "is-selected",
-            value === (filters.color || p.colors[0]),
+            value === (selectedColor || p.colors[0]),
           );
           dot.dataset.color = value;
           dot.style.backgroundColor = S.colors[value][1] || "transparent";
@@ -446,52 +472,16 @@
         });
         grid.append(card);
       });
-      if (!found.length) {
-        const empty = el(
-          "div",
-          "catalog-empty",
-          "Товарів за цими умовами не знайдено. Спробуйте іншу назву або скиньте фільтри.",
+      if (!found.length)
+        grid.append(
+          el(
+            "p",
+            "catalog-empty",
+            "Товарів за цими умовами не знайдено. Спробуйте іншу назву або скиньте фільтри.",
+          ),
         );
-        empty.append(
-          button("Скинути фільтри", "filter-reset", () => reset.click()),
-        );
-        grid.append(empty);
-      }
-      pagination.replaceChildren();
-      for (let i = 1; i <= pages; i++) {
-        const b = button(
-          String(i),
-          "page-number" + (i === page ? " active" : ""),
-          () => {
-            page = i;
-            render();
-          },
-        );
-        b.setAttribute("aria-label", `Сторінка ${i}`);
-        if (i === page) b.setAttribute("aria-current", "page");
-        pagination.append(b);
-      }
-      pagination.hidden = pages === 1;
     }
-    search.addEventListener("input", () => {
-      filters.q = search.value;
-      page = 1;
-      render();
-    });
-    select.addEventListener("change", () => {
-      filters.sort = select.value;
-      page = 1;
-      render();
-    });
     render();
-  } else {
-    const search = $("#product-search");
-    search?.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" && search.value.trim()) {
-        e.preventDefault();
-        location.href = `shop-page.html?q=${encodeURIComponent(search.value.trim())}`;
-      }
-    });
   }
 
   // Створює поле кількості з кнопками плюс і мінус
@@ -534,11 +524,11 @@
   // Визначаємо товар за адресою сторінки та заповнюємо його дані
   const productParams = new URLSearchParams(location.search);
   const current = S.product(productParams.get("id") || "red-jacket");
-  if (options && !current) {
+  if (dataLoaded && options && !current) {
     location.replace("404.html");
     return;
   }
-  if (options) {
+  if (options && current) {
     let qty = 1,
       control = $(".quantity-control", options);
     function setQuantity(v) {
@@ -683,6 +673,14 @@
     });
   }
 
+  if (options && current) {
+    await $(".product-photo img")
+      .decode()
+      .catch(() => {});
+    dataSection.hidden = false;
+    dataStatus.hidden = true;
+  }
+
   const mini = $("#minicart-panel"),
     miniTemplate = mini ? $(".mini-product", mini).cloneNode(true) : null;
   if (mini) $(".mini-product", mini).replaceWith(el("div", "mini-items"));
@@ -719,6 +717,20 @@
   }
   // Оновлює товари, лічильники та суми в кошику і мінікошику
   function renderCart() {
+    if (!dataLoaded) {
+      $$(".cart-count").forEach((node) => {
+        node.textContent = "—";
+        node.parentElement.setAttribute("aria-label", "Кошик: дані недоступні");
+      });
+      if (mini) {
+        $(".mini-items", mini).textContent =
+          "Не вдалося завантажити товари кошика. Оновіть сторінку.";
+        $("#mini-gift-wrap").disabled = true;
+        $(".mini-subtotal span:last-child", mini).textContent = "—";
+        $(".mini-shipping", mini).textContent = "";
+      }
+      return;
+    }
     const t = S.totals(cart);
     $$(".cart-count").forEach((n) => {
       n.textContent = t.count;
@@ -807,7 +819,7 @@
   );
   $('.cart-checkout[type="button"]')?.addEventListener("click", () => {
     if (cart.items.length)
-      openDialog("Демонстраційне оформлення", validatedForm("checkout"));
+      openDialog("Оформити замовлення", validatedForm("checkout"));
   });
   const cartButtons = $$('button[aria-label="Кошик"],.cart-btn');
   cartButtons.forEach((b) => {
@@ -818,6 +830,10 @@
     }
   });
   renderCart();
+  if (dataLoaded && cartBody) {
+    dataSection.hidden = false;
+    dataStatus.hidden = true;
+  }
   // Кнопки без висувної панелі відкривають окрему сторінку кошика
   cartButtons.forEach((b) => {
     if (!b.hasAttribute("popovertarget"))
