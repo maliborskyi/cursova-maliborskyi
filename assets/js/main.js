@@ -545,17 +545,30 @@
       if (label) $(`[aria-label="${label}"]`, control)?.focus();
     }
     setQuantity(1);
-    if (current.id !== "red-jacket") {
+
       $("#product-title").textContent = current.name;
-      document.title = `${current.name} — FASCO`;
-      $('meta[name="description"]').content =
-        `${current.name}: ціна, кольори, розміри та демонстраційний кошик FASCO.`;
-      const photo = $(".product-photo img");
-      photo.src = current.image;
-      photo.alt = current.alt;
-      $(".product-price").replaceChildren(el("span", "", money(current.price)));
-      if (current.oldPrice)
-        $(".product-price").append(el("del", "", money(current.oldPrice)));
+    document.title = `${current.name} — FASCO`;
+    $('meta[name="description"]').content =
+      `${current.name}: ціна, кольори, розміри та демонстраційний кошик FASCO.`;
+    const photo = $(".product-photo img");
+    photo.src = current.image;
+    photo.alt = current.alt;
+    $(".product-price").replaceChildren(el("span", "", money(current.price)));
+    if (current.oldPrice)
+      $(".product-price").append(el("del", "", money(current.oldPrice)));
+    if (current.id === "red-jacket") {
+      const thumbnailImage = $(".product-thumbnails .selected img");
+      thumbnailImage.src = current.image;
+      thumbnailImage.alt = current.alt;
+      if (current.oldPrice > current.price)
+        $(".product-price").append(
+          el(
+            "span",
+            "sale-badge",
+            `ЗНИЖКА ${Math.floor(((current.oldPrice - current.price) / current.oldPrice) * 100)}%`,
+          ),
+        );
+    } else {
       const thumbnails = $(".product-thumbnails");
       const thumbnail = thumbnails.firstElementChild.cloneNode(true);
       thumbnail.classList.add("selected");
@@ -1173,7 +1186,11 @@
     }),
   );
   const wishlist = $("#wish-product");
-  if (wishlist) {
+  if (wishlist && current) {
+    const wishlistKey = `fasco.wishlist.${current.id}`;
+    try {
+      wishlist.checked = storage?.getItem(wishlistKey) === "true";
+    } catch {}
     const star = $(".wishlist-control use");
     const updateStar = () => {
       star.setAttribute(
@@ -1181,7 +1198,13 @@
         `assets/images/icons/sprite-product.svg#icon-star${wishlist.checked ? "-filled" : ""}`,
       );
     };
-    wishlist.addEventListener("change", updateStar);
+    wishlist.addEventListener("change", () => {
+      updateStar();
+      try {
+        if (wishlist.checked) storage?.setItem(wishlistKey, "true");
+        else storage?.removeItem(wishlistKey);
+      } catch {}
+    });
     updateStar();
   }
   if (preview) $("#minicart-panel").showPopover();
