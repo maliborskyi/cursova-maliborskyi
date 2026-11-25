@@ -1,5 +1,3 @@
-/* Mobile First */
-
 @layer layout, adjustments;
 
 @media (min-width: 481px) {
@@ -166,7 +164,7 @@
   font-style: normal;
 }
 
-/* Основне оформлення */
+/* Base styles */
 @layer layout {
   * {
     margin: 0px;
@@ -201,7 +199,7 @@
     font-family: "Jost", "Noto Sans", sans-serif;
   }
 
-  /* Шапка та навігація */
+  /* Header and navigation */
   .main-header {
     width: 100%;
     background-color: #ffffff;
@@ -460,7 +458,7 @@
     transform: scale(1.02);
   }
 
-  /* Бренди */
+  /* Brands */
   .brands-section {
     width: 100%;
     background-color: #ffffff;
@@ -498,7 +496,7 @@
     height: auto;
   }
 
-  /* Плаваючі кнопки */
+  /* Floating buttons */
   .floating-buttons {
     position: fixed;
     display: flex;
@@ -556,7 +554,7 @@
     object-fit: contain;
   }
 
-  /* Пропозиції місяця */
+  /* Deals of the Month */
   .deals-slider {
     box-sizing: border-box;
     flex-grow: 1;
@@ -609,7 +607,7 @@
     line-height: 1.4;
   }
 
-  /* Peaky Blinders і переваги */
+  /* Peaky Blinders and benefits */
   .btn-buy-now {
     background: rgb(0, 0, 0);
     box-shadow: 0px 20px 35px rgba(0, 0, 0, 0.15);
@@ -634,7 +632,7 @@
     background: rgb(38, 38, 38);
   }
 
-  /* Пропозиції місяця */
+  /* Deals of the Month */
   .deals-subtitle {
     font-family: "Lora", serif;
     font-weight: 500;
@@ -697,7 +695,7 @@
     gap: 1px;
   }
 
-  /* Шапка та навігація */
+  /* Header and navigation */
   .nav-btn {
     background: transparent;
     box-shadow: none;
@@ -727,7 +725,7 @@
     object-fit: contain;
   }
 
-  /* Пропозиції місяця */
+  /* Deals of the Month */
   .slider-track {
     grid-template-columns: 404px 774px;
     width: 100%;
@@ -869,7 +867,7 @@
     object-fit: contain;
   }
 
-  /* Нові надходження */
+  /* New arrivals */
   .new-arrivals-section {
     background-color: #ffffff;
     position: relative;
@@ -1050,7 +1048,7 @@
     background-color: #333333;
   }
 
-  /* Peaky Blinders і переваги */
+  /* Peaky Blinders and benefits */
   .peaky-section {
     width: 100%;
     max-width: 1920px;
@@ -1420,7 +1418,7 @@
     height: auto;
   }
 
-  /* Відгуки */
+  /* Reviews */
   .reviews-section {
     background-color: #fafafa;
     padding-top: 100px;
@@ -1697,7 +1695,7 @@
     object-fit: contain;
   }
 
-  /* Розсилка */
+  /* Newsletter */
   .newsletter-section {
     align-items: flex-start;
     display: flex;
@@ -1786,7 +1784,7 @@
     cursor: pointer;
   }
 
-  /* Футер */
+  /* Footer */
   .main-footer {
     border-top-width: 1px;
     border-top-style: solid;
@@ -1843,7 +1841,7 @@
     border-top-color: rgb(240, 240, 240);
   }
 
-  /* Шапка та навігація */
+  /* Header and navigation */
   .menu-toggle {
     display: none;
   }
@@ -1874,7 +1872,7 @@
     box-shadow: none;
   }
 
-  /* Бренди */
+  /* Brands */
   .brand-img {
     object-fit: contain;
   }
@@ -1894,7 +1892,7 @@
     height: auto;
   }
 
-  /* Пропозиції місяця */
+  /* Deals of the Month */
   .deals-section {
     padding: 30px 0px;
     min-height: auto;
@@ -1925,12 +1923,12 @@
     z-index: 10;
   }
 
-  /* Шапка та навігація */
+  /* Header and navigation */
   .nav-btn + .nav-btn {
     margin-left: 0;
   }
 
-  /* Нові надходження */
+  /* New arrivals */
   .product-img-wrap {
     height: 200px;
     width: 100%;
@@ -1962,23 +1960,23 @@
     height: 208px;
   }
 
-  /* Плаваючі кнопки */
+  /* Floating buttons */
   .float-btn {
     width: 40px;
     height: 40px;
   }
 
-  /* Телефони від 381px */
+  /* Phones 381px and up */
   @media (min-width: 381px) {
-    /* Нові надходження */
+    /* New arrivals */
     .products-grid {
       grid-template-columns: 1fr 1fr;
     }
   }
 
-  /* Планшети від 481px */
+  /* Tablets 481px and up */
   @media (min-width: 481px) {
-    /* Шапка та навігація */
+    /* Header and navigation */
     .main-header {
       padding-bottom: 0;
     }
@@ -2055,7 +2053,7 @@
       padding: 0;
     }
 
-    /* Пропозиції місяця */
+    /* Deals of the Month */
     .slider-track {
       flex-wrap: revert;
       overflow-x: revert;
@@ -2118,7 +2116,7 @@
       order: 4;
     }
 
-    /* Нові надходження */
+    /* New arrivals */
     .section-desc {
       padding: 0;
       font-size: 16px;
@@ -2135,7 +2133,7 @@
       object-position: revert;
     }
 
-    /* Peaky Blinders і переваги */
+    /* Peaky Blinders and benefits */
     .peaky-banner {
       display: revert;
       border-radius: revert;
@@ -2215,12 +2213,12 @@
       height: auto;
     }
 
-    /* Відгуки */
+    /* Reviews */
     .reviews-nav-btn {
       margin-top: 0;
     }
 
-    /* Розсилка */
+    /* Newsletter */
     .newsletter-section {
       flex-wrap: revert;
       gap: 20px;
@@ -2258,7 +2256,7 @@
       font-size: 22px;
     }
 
-    /* Футер */
+    /* Footer */
     .footer-nav {
       width: revert;
       row-gap: 30px;
@@ -2273,7 +2271,7 @@
       color: #484848;
     }
 
-    /* Плаваючі кнопки */
+    /* Floating buttons */
     .float-btn {
       width: revert;
       height: revert;
@@ -2285,7 +2283,7 @@
       box-sizing: border-box;
     }
 
-    /* Шапка та навігація */
+    /* Header and navigation */
     .main-header {
       padding-top: 40px;
     }
@@ -2348,7 +2346,7 @@
       font-size: 14px;
     }
 
-    /* Бренди */
+    /* Brands */
     .brands-section {
       margin-top: 40px;
       margin-bottom: 35px;
@@ -2379,7 +2377,7 @@
       height: 27px;
     }
 
-    /* Плаваючі кнопки */
+    /* Floating buttons */
     .floating-buttons {
       right: 30px;
       gap: 35px;
@@ -2395,7 +2393,7 @@
       height: 57px;
     }
 
-    /* Пропозиції місяця */
+    /* Deals of the Month */
     .deals-content {
       max-width: 444px;
     }
@@ -2412,7 +2410,7 @@
       margin-bottom: 40px;
     }
 
-    /* Peaky Blinders і переваги */
+    /* Peaky Blinders and benefits */
     .btn-buy-now {
       width: 207px;
       height: 56px;
@@ -2423,7 +2421,7 @@
       display: block;
     }
 
-    /* Пропозиції місяця */
+    /* Deals of the Month */
     .deals-subtitle {
       font-size: 28px;
       line-height: 42px;
@@ -2447,7 +2445,7 @@
       font-size: 24px;
     }
 
-    /* Шапка та навігація */
+    /* Header and navigation */
     .nav-btn + .nav-btn {
       margin-left: -13px;
     }
@@ -2458,7 +2456,7 @@
       margin-top: -30px;
     }
 
-    /* Пропозиції місяця */
+    /* Deals of the Month */
     .slide-item {
       position: relative;
     }
@@ -2514,7 +2512,7 @@
       display: grid;
     }
 
-    /* Нові надходження */
+    /* New arrivals */
     .section-title {
       font-size: 46px;
     }
@@ -2545,7 +2543,7 @@
       font-size: 16px;
     }
 
-    /* Peaky Blinders і переваги */
+    /* Peaky Blinders and benefits */
     .peaky-section {
       margin: 60px auto 0px;
     }
@@ -2603,7 +2601,7 @@
       height: auto;
     }
 
-    /* Розсилка */
+    /* Newsletter */
     .newsletter-content h2 {
       font-size: 46px;
       margin-bottom: 20px;
@@ -2626,7 +2624,7 @@
       font-size: 16px;
     }
 
-    /* Футер */
+    /* Footer */
     .main-footer {
       margin-top: 10px;
       padding-right: 0px;
@@ -2651,7 +2649,7 @@
       padding-left: 20px;
     }
 
-    /* Бренди */
+    /* Brands */
     .brands-container {
       gap: 30px 40px;
       padding-right: 20px;
@@ -2663,7 +2661,7 @@
       height: auto;
     }
 
-    /* Пропозиції місяця */
+    /* Deals of the Month */
     .deals-section {
       padding-top: 20px;
       padding-bottom: 20px;
@@ -2685,7 +2683,7 @@
       flex-wrap: wrap;
     }
 
-    /* Нові надходження */
+    /* New arrivals */
     .new-arrivals-section {
       padding: 60px 0px;
     }
@@ -2700,7 +2698,7 @@
       padding-left: 30px;
     }
 
-    /* Peaky Blinders і переваги */
+    /* Peaky Blinders and benefits */
     .model-wrapper {
       margin-left: 0px;
     }
@@ -2737,7 +2735,7 @@
       margin-bottom: 10px;
     }
 
-    /* Відгуки */
+    /* Reviews */
     .side-card {
       transform: scale(0.9);
     }
@@ -2760,7 +2758,7 @@
       margin-left: 0;
     }
 
-    /* Розсилка */
+    /* Newsletter */
     .newsletter-section {
       padding: 40px 20px;
       margin-top: 0;
@@ -2779,7 +2777,7 @@
       margin-bottom: -50px;
     }
 
-    /* Футер */
+    /* Footer */
     .footer-container {
       gap: 30px;
       margin-top: -10px;
@@ -2790,7 +2788,7 @@
       margin-bottom: 5px;
     }
 
-    /* Шапка та навігація */
+    /* Header and navigation */
     .header-container {
       gap: 12px;
     }
@@ -2805,7 +2803,7 @@
       text-align: center;
     }
 
-    /* Відгуки */
+    /* Reviews */
     .reviews-info {
       width: 100%;
       min-width: 0;
@@ -2813,15 +2811,15 @@
     }
   }
 
-  /* Планшети від 576px */
+  /* Tablets 576px and up */
   @media (min-width: 576px) {
-    /* Пропозиції місяця */
+    /* Deals of the Month */
     .discount-card {
       min-height: revert;
       max-width: calc(100% - 30px);
     }
 
-    /* Нові надходження */
+    /* New arrivals */
     .product-stars .star-icon {
       width: 17px;
       height: 17px;
@@ -2838,7 +2836,7 @@
       text-align: revert;
     }
 
-    /* Відгуки */
+    /* Reviews */
     .reviews-info {
       width: revert;
       min-width: revert;
@@ -2851,7 +2849,7 @@
       padding: 0px;
     }
 
-    /* Нові надходження */
+    /* New arrivals */
     .product-card {
       height: 438px;
       padding: 15px 25px 25px;
@@ -2894,15 +2892,15 @@
       font-size: 96px;
     }
 
-    /* Відгуки */
+    /* Reviews */
     .reviews-image-wrap {
       margin-left: 20px;
     }
   }
 
-  /* Повне меню від 700px */
+  /* Full menu from 700px */
   @media (min-width: 700px) {
-    /* Шапка та навігація */
+    /* Header and navigation */
     .header-container {
       position: revert;
       gap: revert;
@@ -2951,7 +2949,7 @@
       margin-left: 15px;
     }
 
-    /* Peaky Blinders і переваги */
+    /* Peaky Blinders and benefits */
     .features-row {
       padding-left: 90px;
     }
@@ -2962,13 +2960,13 @@
     }
   }
 
-  /* Широкі планшети від 800px */
+  /* Wide tablets 800px and up */
   @media (min-width: 800px) {
     * {
       padding-left: 0px;
     }
 
-    /* Peaky Blinders і переваги */
+    /* Peaky Blinders and benefits */
     .peaky-model-img {
       height: 150%;
       object-position: 25% 40%;
@@ -2985,9 +2983,9 @@
     }
   }
 
-  /* Ноутбуки від 1025px */
+  /* Laptops 1025px and up */
   @media (min-width: 1025px) {
-    /* Шапка та навігація */
+    /* Header and navigation */
     .logo {
       margin-left: 0;
       font-size: 52px;
@@ -2999,14 +2997,14 @@
       min-height: revert;
     }
 
-    /* Бренди */
+    /* Brands */
     .brand-img {
       height: revert;
       object-fit: contain;
       max-width: 100%;
     }
 
-    /* Пропозиції місяця */
+    /* Deals of the Month */
     .deals-section {
       padding-right: 0;
       padding-left: 0;
@@ -3035,7 +3033,7 @@
       max-width: 360px;
     }
 
-    /* Peaky Blinders і переваги */
+    /* Peaky Blinders and benefits */
     .btn-buy-now {
       margin-bottom: 0;
       margin-left: 0;
@@ -3043,7 +3041,7 @@
       display: revert;
     }
 
-    /* Пропозиції місяця */
+    /* Deals of the Month */
     .slide-img {
       border-radius: revert;
     }
@@ -3071,12 +3069,12 @@
       bottom: -18px;
     }
 
-    /* Шапка та навігація */
+    /* Header and navigation */
     .nav-btn {
       margin-top: 0;
     }
 
-    /* Нові надходження */
+    /* New arrivals */
     .category-tabs {
       padding-bottom: 0;
       gap: 25px;
@@ -3089,7 +3087,7 @@
       font-size: 16px;
     }
 
-    /* Peaky Blinders і переваги */
+    /* Peaky Blinders and benefits */
     .peaky-banner {
       flex-direction: revert;
       height: 570px;
@@ -3139,7 +3137,7 @@
       object-position: revert;
     }
 
-    /* Відгуки */
+    /* Reviews */
     .reviews-section {
       padding-right: 0;
       padding-left: 0;
@@ -3163,7 +3161,7 @@
       height: 140px;
     }
 
-    /* Розсилка */
+    /* Newsletter */
     .newsletter-section {
       padding-right: 0;
       padding-left: 0;
@@ -3190,7 +3188,7 @@
       margin-bottom: 0;
     }
 
-    /* Футер */
+    /* Footer */
     .footer-container {
       flex-direction: revert;
       gap: revert;
@@ -3204,7 +3202,7 @@
       gap: 38px;
     }
 
-    /* Peaky Blinders і переваги */
+    /* Peaky Blinders and benefits */
     .peaky-model-img {
       margin-bottom: 0;
       transform: translateX(-50%);
@@ -3261,7 +3259,7 @@
       font-size: 16px;
     }
 
-    /* Бренди */
+    /* Brands */
     .brands-section {
       padding-top: 60px;
       padding-bottom: 60px;
@@ -3296,7 +3294,7 @@
       object-fit: cover;
     }
 
-    /* Пропозиції місяця */
+    /* Deals of the Month */
     .deals-section {
       padding-top: 155px;
       padding-bottom: 145px;
@@ -3322,7 +3320,7 @@
       font-size: 22px;
     }
 
-    /* Нові надходження */
+    /* New arrivals */
     .new-arrivals-section {
       padding-top: 150px;
       padding-bottom: 110px;
@@ -3333,7 +3331,7 @@
       gap: 30px;
     }
 
-    /* Peaky Blinders і переваги */
+    /* Peaky Blinders and benefits */
     .peaky-right-content-zone {
       padding-left: 20px;
     }
@@ -3366,7 +3364,7 @@
       aspect-ratio: 256 / 308;
     }
 
-    /* Відгуки */
+    /* Reviews */
     .reviews-section {
       padding-top: 100px;
       padding-bottom: 58px;
@@ -3378,7 +3376,7 @@
       height: 260px;
     }
 
-    /* Розсилка */
+    /* Newsletter */
     .newsletter-section {
       padding-top: 150px;
       padding-bottom: 60px;
@@ -3400,12 +3398,12 @@
       margin-bottom: 0px;
     }
 
-    /* Футер */
+    /* Footer */
     .footer-container {
       margin-top: 0px;
     }
 
-    /* Пропозиції місяця */
+    /* Deals of the Month */
     .deals-slider {
       --deals-inset: 30px;
       padding-left: var(--deals-inset);
@@ -3427,7 +3425,7 @@
       padding-left: 15px;
     }
 
-    /* Peaky Blinders і переваги */
+    /* Peaky Blinders and benefits */
     .peaky-separator {
       left: 55%;
     }
@@ -3449,7 +3447,7 @@
       margin-left: -260px;
     }
 
-    /* Відгуки */
+    /* Reviews */
     .reviews-bg-rect,
     .reviews-photo {
       width: 200px;
@@ -3467,7 +3465,7 @@
       line-height: 1.2;
     }
 
-    /* Розсилка */
+    /* Newsletter */
     .news-img-man,
     .news-img-woman {
       width: 260px;
@@ -3484,9 +3482,9 @@
     }
   }
 
-  /* Великі екрани від 1441px */
+  /* Large screens 1441px and up */
   @media (min-width: 1441px) {
-    /* Пропозиції місяця */
+    /* Deals of the Month */
     .btn-buy-now {
       margin-bottom: 50px;
       top: 0;
@@ -3498,7 +3496,7 @@
       height: 582px;
     }
 
-    /* Peaky Blinders і переваги */
+    /* Peaky Blinders and benefits */
     .peaky-lines-overlay {
       object-fit: revert;
       object-position: revert;
@@ -3508,7 +3506,7 @@
       height: 96.78%;
     }
 
-    /* Розсилка */
+    /* Newsletter */
     .newsletter-form {
       max-width: revert;
       width: 631px;
@@ -3521,7 +3519,7 @@
       padding: 0px;
     }
 
-    /* Пропозиції місяця */
+    /* Deals of the Month */
     .deals-slider {
       height: 582px;
       --deals-inset: 90px;
@@ -3565,7 +3563,7 @@
       font-size: 25px;
     }
 
-    /* Peaky Blinders і переваги */
+    /* Peaky Blinders and benefits */
     .peaky-separator {
       left: 54.86%;
     }
@@ -3593,7 +3591,7 @@
       margin-left: -344px;
     }
 
-    /* Відгуки */
+    /* Reviews */
     .side-card {
       width: 648px;
       height: 300px;
@@ -3618,7 +3616,7 @@
       line-height: 41px;
     }
 
-    /* Розсилка */
+    /* Newsletter */
     .newsletter-section {
       gap: 80px;
     }
@@ -3640,9 +3638,9 @@
     }
   }
 
-  /* Екрани від 1921px, включно з 4K */
+  /* Screens 1921px and up, including 4K */
   @media (min-width: 1921px) {
-    /* Peaky Blinders і переваги */
+    /* Peaky Blinders and benefits */
     .peaky-separator {
       left: 54.96%;
       transform: skewX(-24deg);
@@ -3650,9 +3648,9 @@
   }
 }
 
-/* Типографіка, меню та зображення */
+/* Typography, menu, and images */
 @layer adjustments {
-  /* Шапка та навігація */
+  /* Header and navigation */
   .nav-menu.is-active {
     display: flex;
   }
@@ -3663,13 +3661,13 @@
     object-position: center top;
   }
 
-  /* Бренди */
+  /* Brands */
   .brand-img {
     width: auto;
     height: auto;
   }
 
-  /* Пропозиції місяця */
+  /* Deals of the Month */
   .secondary-slide {
     overflow: hidden;
   }
@@ -3680,7 +3678,7 @@
     transform: scale(1.4) translateY(13%) translateX(15%);
   }
 
-  /* Peaky Blinders і переваги */
+  /* Peaky Blinders and benefits */
   .peaky-separator,
   .peaky-lines-overlay {
     display: none;
@@ -3789,21 +3787,21 @@
     height: 50px;
   }
 
-  /* Розсилка */
+  /* Newsletter */
   .news-img-man,
   .news-img-woman {
     display: none;
   }
 
-  /* Плаваючі кнопки */
+  /* Floating buttons */
   .float-btn svg {
     width: 20px;
     height: 20px;
   }
 
-  /* Телефони від 400px */
+  /* Phones 400px and up */
   @media (min-width: 400px) {
-    /* Пропозиції місяця */
+    /* Deals of the Month */
     .secondary-slide img[src*="deal-casual-outfit.webp"] {
       object-position: 50% -50%;
       transform: scale(1.5) translateX(12%);
@@ -3811,7 +3809,7 @@
     }
   }
 
-  /* Планшети від 481px */
+  /* Tablets 481px and up */
   @media (min-width: 481px) {
     /* Hero */
     .center-img-top,
@@ -3819,13 +3817,13 @@
       object-position: revert-layer;
     }
 
-    /* Бренди */
+    /* Brands */
     .brand-img {
       width: revert-layer;
       height: revert-layer;
     }
 
-    /* Пропозиції місяця */
+    /* Deals of the Month */
     .secondary-slide {
       overflow: revert-layer;
       order: 2;
@@ -3833,7 +3831,7 @@
       height: 280px;
     }
 
-    /* Peaky Blinders і переваги */
+    /* Peaky Blinders and benefits */
     .feature-box {
       white-space-collapse: revert-layer;
       text-wrap-mode: revert-layer;
@@ -3870,7 +3868,7 @@
       margin-top: -120px;
     }
 
-    /* Peaky Blinders і переваги */
+    /* Peaky Blinders and benefits */
     .peaky-title,
     .logo,
     .peaky-desc,
@@ -3946,12 +3944,12 @@
       margin-left: auto;
     }
 
-    /* Бренди */
+    /* Brands */
     .brands-section {
       height: auto;
     }
 
-    /* Пропозиції місяця */
+    /* Deals of the Month */
     .secondary-slides-wrapper,
     .secondary-slides {
       display: contents;
@@ -4013,7 +4011,7 @@
       gap: 20px;
     }
 
-    /* Шапка та навігація */
+    /* Header and navigation */
     .nav-btn {
       width: 60px;
       height: 60px;
@@ -4028,7 +4026,7 @@
       height: 60px;
     }
 
-    /* Пропозиції місяця */
+    /* Deals of the Month */
     .dot {
       width: 14px;
       height: 14px;
@@ -4063,7 +4061,7 @@
       padding-top: 0;
     }
 
-    /* Peaky Blinders і переваги */
+    /* Peaky Blinders and benefits */
     .peaky-lines-overlay {
       display: block;
     }
@@ -4078,7 +4076,7 @@
       height: 100%;
     }
 
-    /* Відгуки */
+    /* Reviews */
     .side-card {
       width: 350px;
       height: 250px;
@@ -4126,7 +4124,7 @@
       margin-bottom: 20px;
     }
 
-    /* Розсилка */
+    /* Newsletter */
     .newsletter-content h2 {
       font-size: 30px;
       margin-bottom: 10px;
@@ -4151,7 +4149,7 @@
       font-size: 14px;
     }
 
-    /* Шапка та навігація */
+    /* Header and navigation */
     .header-container {
       padding: 0px 20px;
     }
@@ -4161,7 +4159,7 @@
       display: flex;
     }
 
-    /* Пропозиції місяця */
+    /* Deals of the Month */
     .discount-num,
     .discount-name {
       font-size: 12px;
@@ -4172,15 +4170,15 @@
     }
   }
 
-  /* Планшети від 576px */
+  /* Tablets 576px and up */
   @media (min-width: 576px) {
-    /* Відгуки */
+    /* Reviews */
     .reviews-quote {
       line-height: revert-layer;
       font-size: 12px;
     }
 
-    /* Пропозиції місяця */
+    /* Deals of the Month */
     .discount-card {
       left: 15px;
       padding: 0px 15px;
@@ -4206,9 +4204,9 @@
     }
   }
 
-  /* Повне меню від 700px */
+  /* Full menu from 700px */
   @media (min-width: 700px) {
-    /* Шапка та навігація */
+    /* Header and navigation */
     .nav-menu.is-active {
       display: revert-layer;
     }
@@ -4240,9 +4238,9 @@
     }
   }
 
-  /* Ноутбуки від 1025px */
+  /* Laptops 1025px and up */
   @media (min-width: 1025px) {
-    /* Шапка та навігація */
+    /* Header and navigation */
     .header-container {
       padding: revert-layer;
     }
@@ -4281,12 +4279,12 @@
       margin-left: revert-layer;
     }
 
-    /* Бренди */
+    /* Brands */
     .brands-section {
       height: revert-layer;
     }
 
-    /* Пропозиції місяця */
+    /* Deals of the Month */
     .secondary-slides-wrapper {
       display: revert-layer;
     }
@@ -4351,7 +4349,7 @@
       gap: revert-layer;
     }
 
-    /* Шапка та навігація */
+    /* Header and navigation */
     .nav-btn {
       width: revert-layer;
       height: revert-layer;
@@ -4366,7 +4364,7 @@
       height: revert-layer;
     }
 
-    /* Пропозиції місяця */
+    /* Deals of the Month */
     .dot {
       width: revert-layer;
       height: revert-layer;
@@ -4401,7 +4399,7 @@
       padding-top: revert-layer;
     }
 
-    /* Peaky Blinders і переваги */
+    /* Peaky Blinders and benefits */
     .peaky-separator {
       display: revert-layer;
     }
@@ -4428,7 +4426,7 @@
       gap: revert-layer;
     }
 
-    /* Відгуки */
+    /* Reviews */
     .side-card {
       width: revert-layer;
       height: revert-layer;
@@ -4476,7 +4474,7 @@
       margin-bottom: revert-layer;
     }
 
-    /* Розсилка */
+    /* Newsletter */
     .news-img-man,
     .news-img-woman {
       display: revert-layer;
@@ -4502,7 +4500,7 @@
       font-size: revert-layer;
     }
 
-    /* Пропозиції місяця */
+    /* Deals of the Month */
     .secondary-slides {
       display: grid;
       grid-template-columns: 290px 290px;
@@ -4514,15 +4512,15 @@
       transform: scale(1.1) translateY(4%) translateX(20%);
     }
 
-    /* Peaky Blinders і переваги */
+    /* Peaky Blinders and benefits */
     .model-wrapper {
       left: 4%;
     }
   }
 
-  /* Великі екрани від 1441px */
+  /* Large screens 1441px and up */
   @media (min-width: 1441px) {
-    /* Пропозиції місяця */
+    /* Deals of the Month */
     .slider-track {
       display: revert-layer;
       grid-template-columns: revert-layer;
@@ -4542,7 +4540,7 @@
       transform: revert-layer;
     }
 
-    /* Peaky Blinders і переваги */
+    /* Peaky Blinders and benefits */
     .model-wrapper {
       left: revert-layer;
     }

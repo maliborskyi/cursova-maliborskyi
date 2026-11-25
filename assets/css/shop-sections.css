@@ -434,6 +434,7 @@
     min-height: 56px;
   }
 
+  /* Scale and move the lines with the photo. */
   .peaky-lines-overlay {
     --peaky-photo-size: max(100vw, 660px);
     display: block;

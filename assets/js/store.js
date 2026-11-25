@@ -1,5 +1,6 @@
-// Дані товарів і функції кошика. Ціни зберігаються в центах для точного підрахунку
+// Product data and cart functions. Prices are stored in cents for accurate calculations
 (function (root, factory) {
+  // Makes the store functions available to the page scripts.
   const api = factory();
   if (typeof module === "object" && module.exports) module.exports = api;
   else root.FascoStore = api;
@@ -25,6 +26,7 @@
   const colorNames = Object.keys(colors).filter((key) => key !== "pattern");
   const products = [];
 
+  // Loads the catalog from products.json.
   async function loadProducts() {
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), 10000);
@@ -34,6 +36,7 @@
       });
       if (!response.ok) throw new Error("Не вдалося завантажити товари.");
       const data = await response.json();
+      // Check the product fields and look for duplicate IDs.
       if (
         !Array.isArray(data) ||
         new Set(data.map((p) => p?.id)).size !== data.length ||
@@ -61,6 +64,7 @@
         )
       )
         throw new Error("Некоректні дані товарів.");
+      // Keep the same array so other scripts can still use it.
       products.splice(0, products.length, ...data);
       return products;
     } finally {
@@ -68,16 +72,16 @@
     }
   }
 
-  // Назва запису, під якою кошик зберігається у localStorage
+  // localStorage key for the cart
   const KEY = "fasco.cart.v1";
-  // Знаходить товар за його кодом
+  // Finds a product by its code
   const product = (id) => products.find((p) => p.id === id);
-  // Залишає цілу кількість у межах від 1 до 99
+  // Keeps the quantity as an integer between 1 and 99
   const quantity = (value) =>
     Math.min(99, Math.max(1, Math.trunc(Number(value)) || 1));
-  // Відрізняємо позиції кошика за товаром, розміром і кольором
+  // Identifies cart items by product, size, and color
   const lineKey = (l) => JSON.stringify([l.id, l.size, l.color]);
-  // Перевіряє збережений кошик, відкидає некоректні позиції та об’єднує однакові
+  // Validates the saved cart, discards invalid items, and merges duplicates
   function cleanCart(value) {
     const cart = { version: 1, items: [], giftWrap: false };
     if (!value || value.version !== 1 || !Array.isArray(value.items))
@@ -85,6 +89,7 @@
     for (const line of value.items.slice(0, 200)) {
       if (!line || typeof line !== "object") continue;
       const p = product(line.id);
+      // Older carts used "plaid" for this color.
       const color = line.color === "plaid" ? "pattern" : line.color;
       if (
         !p ||
@@ -107,7 +112,7 @@
     return cart;
   }
 
-  // Завантажує кошик зі сховища або повертає порожній кошик
+  // Loads the cart from storage or returns an empty cart
   function read(storage) {
     try {
       return cleanCart(JSON.parse(storage.getItem(KEY)));
@@ -116,7 +121,7 @@
     }
   }
 
-  // Зберігає кошик і повідомляє, чи вдалося виконати запис
+  // Saves the cart and reports whether the write succeeded
   function save(storage, cart) {
     const safe = cleanCart(cart);
     try {
@@ -127,7 +132,7 @@
     }
   }
 
-  // Додає товар або збільшує кількість уже вибраного варіанта
+  // Adds a product or increases the quantity of a variant already in the cart
   function add(cart, id, size, color, qty) {
     const p = product(id);
     if (!p || p.soldOut || !p.sizes.includes(size) || !p.colors.includes(color))
@@ -140,7 +145,7 @@
     return next;
   }
 
-  // Рахує вартість товарів, пакування, загальну суму та кількість одиниць
+  // Calculates the product subtotal, packaging cost, total, and item count
   function totals(cart) {
     const safe = cleanCart(cart);
     const subtotal = safe.items.reduce(
@@ -156,7 +161,7 @@
     };
   }
 
-  // Перевіряє поля форми та повертає повідомлення про знайдені помилки
+  // Validates form fields and returns messages for any errors found
   function validate(fields) {
     const errors = {};
     if (

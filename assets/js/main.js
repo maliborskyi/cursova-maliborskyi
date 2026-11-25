@@ -1,11 +1,11 @@
-// Інтерактивні компоненти сторінок: меню, форми, каталог, слайдери та кошик
+// Interactive page components include menus, forms, the catalog, sliders, and the cart
 (async () => {
   "use strict";
   const S = window.FascoStore;
   const $ = (s, r = document) => r.querySelector(s),
     $$ = (s, r = document) => [...r.querySelectorAll(s)];
   const money = (v) => `$${(v / 100).toFixed(2)}`;
-  // Допоміжні функції для створення елементів, кнопок і посилань
+  // Helper functions for creating elements, buttons, and links
   function el(tag, cls, text) {
     const n = document.createElement(tag);
     if (cls) n.className = cls;
@@ -24,7 +24,7 @@
     return n;
   }
 
-  // Підготовка сторінки з відкритим мінікошиком
+  // Sets up the page with the mini cart open
   const preview = document.body.classList.contains("minicart-demo");
   if (preview) {
     document.body.classList.remove("minicart-demo");
@@ -55,7 +55,7 @@
       live.textContent = "";
     }, 3000);
   };
-  // Якщо зображення не завантажилося, показуємо запасне
+  // Shows a fallback image if the original fails to load
   const fallback = (img) =>
     img.addEventListener(
       "error",
@@ -75,7 +75,7 @@
   let dataLoaded = false;
   let cart = S.cleanCart(null);
 
-  // Зберігає зміни кошика та оновлює його на сторінці
+  // Saves cart changes and updates the cart on the page
   function commit(next) {
     if (!dataLoaded) return false;
     cart = S.cleanCart(next);
@@ -87,7 +87,7 @@
     renderCart();
     return saved;
   }
-  // Оновлюємо кошик, якщо його змінили в іншій вкладці браузера
+  // Updates the cart when it changes in another browser tab
   window.addEventListener("storage", (e) => {
     if (dataLoaded && (e.key === S.KEY || e.key === null)) {
       cart = S.read(storage);
@@ -95,7 +95,7 @@
     }
   });
 
-  // Відкриває модальне вікно. Його можна закрити хрестиком, кліком поза ним або Escape
+  // Opens a modal. Close it with the close button, by clicking outside it, or by pressing Escape
   function openDialog(title, content, opener = document.activeElement) {
     const dialog = el("dialog", "fasco-dialog"),
       head = el("div", "fasco-dialog-head"),
@@ -147,7 +147,7 @@
   }
   const info = (title, text) => openDialog(title, el("p", "", text));
 
-  // Створює форму запитання або оформлення та перевіряє введені дані
+  // Creates an inquiry or checkout form and validates the input
   function validatedForm(kind) {
     const form = el("form", "fasco-form");
     form.noValidate = true;
@@ -231,7 +231,7 @@
     return form;
   }
 
-  // Відкриття і закриття мобільного меню
+  // Opening and closing the mobile menu
   const toggle = $(".nav-toggle,.menu-toggle-input"),
     nav = $(".main-nav,.nav-menu");
   let menu = toggle
@@ -278,6 +278,7 @@
     });
   }
 
+  // Closes the search panel on an outside click or Escape.
   $$(".search-control").forEach((search) => {
     const toggle = $(".search-toggle", search);
     const closeSearch = () => {
@@ -295,6 +296,7 @@
     });
   });
 
+  // Loads product data and shows a retry button if it fails.
   const grid = $("#product-grid");
   const dataSection = $(".product-section") || $(".cart-content");
   const dataStatus = el(
@@ -315,6 +317,7 @@
   try {
     await S.loadProducts();
     dataLoaded = true;
+    // Load products first so we can check the saved cart.
     cart = S.read(storage);
     if (!dataSection) dataStatus.hidden = true;
     if (grid) grid.hidden = false;
@@ -330,6 +333,7 @@
     );
   }
 
+  // Sets up search, filters and sorting for the catalog.
   if (grid) {
     const template = $("#product-card-template").content.firstElementChild;
     const summary = dataStatus;
@@ -365,6 +369,7 @@
     const sizes = $$(".filters-sidebar .size-btn");
     const colors = $$(".filters-sidebar .color-options button");
     const prices = $$(".filters-sidebar .price-list button");
+    // Click the same filter again to clear it.
     function choose(nodes, node) {
       const active = node.getAttribute("aria-pressed") !== "true";
       nodes.forEach((button) => button.setAttribute("aria-pressed", "false"));
@@ -435,6 +440,7 @@
         card.dataset.productId = p.id;
         const url = new URL("product-page.html", location.href);
         url.searchParams.set("id", p.id);
+        // Pass the chosen size and color to the product page.
         if (selectedColor) url.searchParams.set("color", selectedColor);
         if (selectedSize) url.searchParams.set("size", selectedSize);
         const productUrl = url.href;
@@ -489,7 +495,7 @@
     render();
   }
 
-  // Створює поле кількості з кнопками плюс і мінус
+  // Creates a quantity field with plus and minus buttons
   function quantityControl(value, change, cls = "quantity-control") {
     const wrap = el("div", cls),
       row = el(
@@ -526,7 +532,7 @@
     return wrap;
   }
   const options = $(".product-options");
-  // Визначаємо товар за адресою сторінки та заповнюємо його дані
+  // Identifies the product from the page URL and fills in its details
   const productParams = new URLSearchParams(location.search);
   const current = S.product(productParams.get("id") || "red-jacket");
   if (dataLoaded && options && !current) {
@@ -582,6 +588,7 @@
         $(".product-details"),
       ).forEach((n) => (n.hidden = true));
     }
+    // Builds the size and color choices and picks a starting option.
     ["size", "color"].forEach((kind) => {
       const picker = $(`.${kind}-picker`);
       const legend = $("legend", picker);
@@ -619,6 +626,7 @@
         box.append(input, label);
       });
     });
+    // Adds the selected size, color and quantity to the cart.
     const add = $(".add-to-cart");
     add.disabled = current.soldOut;
     if (current.soldOut) {
@@ -667,7 +675,7 @@
           info("Посилання на товар", location.href);
         }
       });
-    // Натискання мініатюри змінює головне фото
+    // Clicking a thumbnail changes the main photo
     $$(".product-thumbnails li").forEach((li) => {
       const img = $("img", li),
         b = button("", "gallery-thumb");
@@ -699,6 +707,7 @@
     dataStatus.hidden = true;
   }
 
+  // Uses the HTML rows as templates for the cart and mini cart.
   const mini = $("#minicart-panel"),
     miniTemplate = mini ? $(".mini-product", mini).cloneNode(true) : null;
   if (mini) $(".mini-product", mini).replaceWith(el("div", "mini-items"));
@@ -706,7 +715,7 @@
     cartTemplate = cartBody?.firstElementChild.cloneNode(true);
   $(".cart-remove-toggle")?.remove();
   $(".cart-empty .cart-remove")?.remove();
-  // Змінює кількість товару в кошику
+  // Changes the quantity of a product in the cart
   function updateLine(index, qty) {
     const active = document.activeElement,
       miniFocus = !!active?.closest(".mini-product"),
@@ -714,6 +723,7 @@
     const next = S.cleanCart(cart);
     next.items[index].qty = S.quantity(qty);
     commit(next);
+    // Restore focus after the cart rows are rebuilt.
     if (label) {
       const root = $$(miniFocus ? ".mini-product" : ".cart-table tbody tr")[
         index
@@ -721,7 +731,7 @@
       if (root) $(`[aria-label="${label}"]`, root)?.focus();
     }
   }
-  // Прибирає вибрану позицію з кошика
+  // Removes the selected item from the cart
   function removeLine(index) {
     const miniFocus = !!document.activeElement?.closest(".mini-product");
     const next = S.cleanCart(cart);
@@ -733,7 +743,7 @@
       $(".fasco-remove", rows[Math.min(index, rows.length - 1)])?.focus();
     else $(miniFocus ? ".mini-items a" : ".cart-empty a")?.focus();
   }
-  // Оновлює товари, лічильники та суми в кошику і мінікошику
+  // Updates items, counts, and totals in the cart and mini cart
   function renderCart() {
     if (!dataLoaded) {
       $$(".cart-count").forEach((node) => {
@@ -830,6 +840,7 @@
       $("#gift-wrap").checked = cart.giftWrap;
     }
   }
+  // Handles gift wrapping and opens the checkout form.
   ["gift-wrap", "mini-gift-wrap"].forEach((id) =>
     $(`#${id}`)?.addEventListener("change", (e) =>
       commit({ ...cart, giftWrap: e.target.checked }),
@@ -852,13 +863,13 @@
     dataSection.hidden = false;
     dataStatus.hidden = true;
   }
-  // Кнопки без висувної панелі відкривають окрему сторінку кошика
+  // Buttons without a slide-out panel open the separate cart page
   cartButtons.forEach((b) => {
     if (!b.hasAttribute("popovertarget"))
       b.addEventListener("click", () => (location.href = "cart-page.html"));
   });
 
-  // Таймер рахує залишок часу до збереженої дати завершення акції
+  // The timer counts down to the saved promotion end date
   $$(".timer-wrapper,.sale-timer-numbers").forEach((timer) => {
     const monthly = timer.classList.contains("timer-wrapper");
     const digits = monthly ? $$(".timer-num", timer) : $$("span", timer);
@@ -879,13 +890,13 @@
     }
     const duration =
       (initial > 0 ? initial : monthly ? 3 * 86400 : 6 * 3600) * 1000;
-    // Після завершення демонстраційної акції починаємо новий відлік
+    // Starts a new countdown when the demo promotion ends
     function restartCountdown() {
       deadline = Date.now() + duration;
       try {
         storage?.setItem(key, String(deadline));
       } catch {
-        // Без сховища таймер працює до закриття сторінки
+        // Without storage, the timer runs until the page is closed
       }
     }
     if (
@@ -923,7 +934,7 @@
     });
   });
 
-  // Слайдер сезонних пропозицій перемикає фото, підписи та крапки
+  // The seasonal deals slider updates the photos, captions, and pagination dots
   $$(".deals-slider").forEach((slider) => {
     const images = $$(".slide-img", slider),
       items = images.map((i) => ({ src: i.getAttribute("src"), alt: i.alt }));
@@ -935,12 +946,11 @@
     pagination.replaceChildren();
     const track = $(".slider-track", slider),
       previews = $(".secondary-slides-wrapper", slider);
-    // Після осінньої пропозиції знову показуємо весняну
     track.after(pagination);
     slider.setAttribute("role", "group");
     slider.setAttribute("aria-roledescription", "слайдер");
     slider.setAttribute("aria-label", "Сезонні пропозиції");
-    // Підбирає кадрування фото, щоб дівчину було видно в прев’ю
+    // Adjusts the photo crop to keep the woman visible in the preview
     function alignPortrait() {
       images.forEach((img) => {
         if (
@@ -969,10 +979,10 @@
               document.documentElement.clientWidth,
             ) - Math.max(frame.left, clip.left),
           );
-          // У весняному слайді зміщуємо дівчину в межі видимої частини фото
+          // Repositions the woman within the visible part of the photo in the spring slide
           if (visibleWidth > 0) portraitCentre = visibleWidth / 2;
         }
-        // На початковому фото дівчина розташована приблизно на 37% його ширини
+        // In the original photo, the woman is about 37% of the way across
         const offset = Math.max(
           0,
           Math.min(overflow, renderedWidth * 0.37 - portraitCentre),
@@ -1036,6 +1046,7 @@
         ][index];
       alignPortrait();
     }
+    // Wrap around when going past the first or last slide.
     prev.addEventListener("click", () => {
       index = (index - 1 + items.length) % items.length;
       paint();
@@ -1046,13 +1057,14 @@
     });
     paint();
   });
+  // Switches the main review and updates the cards on either side.
   const reviews = $(".reviews-section");
   if (reviews) {
     const main = $(".main-card", reviews),
       left = $(".left-card", reviews),
       right = $(".right-card", reviews),
       image = $(".reviews-photo", main);
-    // Беремо три початкові відгуки та фото з index.html
+    // Uses the three initial reviews and photos from index.html
     const items = [left, main, right].map((card) => {
       const photo = $(".reviews-photo,.side-photo", card);
       return {
@@ -1070,7 +1082,7 @@
     status.setAttribute("role", "status");
     $(".reviews-nav", reviews).after(status);
 
-    // Заповнює картку відгуку текстом, іменем і фотографією
+    // Fills in the review card with the text, name, and photo
     function paintCard(card, item, central = false) {
       const prefix = central ? "reviews" : "side";
       $(`.${prefix}-quote`, card).textContent = item.quote;
@@ -1101,7 +1113,7 @@
     });
     paint();
   }
-  // Вкладки показують товари вибраної категорії нових надходжень
+  // The tabs show products from the selected new arrivals category
   const arrivals = $(".new-arrivals-section");
   if (arrivals) {
     const cards = $$(".product-card", arrivals),
@@ -1135,7 +1147,7 @@
       });
     });
   }
-  // Перевіряємо email перед показом повідомлення про підписку
+  // Validates the email address before showing the subscription message
   $$(".newsletter-form").forEach((form, index) => {
     form.noValidate = true;
     const input = $('input[type="email"]', form),
@@ -1145,7 +1157,6 @@
     input.required = true;
     input.autocomplete = "email";
     input.maxLength = 254;
-    input.setAttribute("aria-label", "Електронна пошта");
     submit.type = "submit";
     const status = el("p", "newsletter-status");
     status.id = `${input.id}-status`;
@@ -1185,6 +1196,7 @@
       location.href = "404.html";
     }),
   );
+  // Restores and saves the favorite for this product.
   const wishlist = $("#wish-product");
   if (wishlist && current) {
     const wishlistKey = `fasco.wishlist.${current.id}`;

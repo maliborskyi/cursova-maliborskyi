@@ -192,7 +192,7 @@ svg {
   transform: translateY(-7px) rotate(-45deg);
 }
 
-/* Мобільна навігація і бургер меню */
+/* Mobile navigation and hamburger menu */
 .main-nav {
   order: 3;
   display: none;
@@ -286,7 +286,7 @@ svg {
   outline-offset: 2px;
 }
 
-/* Заголовок сторінки */
+/* Page title */
 .page-title-section {
   padding: 30px 0 10px;
   text-align: center;
@@ -317,7 +317,7 @@ svg {
   height: 8px;
 }
 
-/* Каталог / фільтри */
+/* Catalog / filters */
 .catalog-section {
   display: flex;
   flex-direction: column;
@@ -537,7 +537,7 @@ svg {
   color: #000000;
 }
 
-/* Панель сортування / перегляду */
+/* Sorting / view toolbar */
 .products-content {
   width: 100%;
   min-width: 0;
@@ -574,7 +574,7 @@ svg {
   pointer-events: none;
 }
 
-/* Кнопки показу товару різними способами - списком та у колонки різного розміру (від 2 до 5) */
+/* Product view buttons for a list or a grid with 2 to 5 columns */
 .view-switchers {
   display: flex;
   flex-wrap: nowrap;
@@ -688,7 +688,7 @@ svg {
   color: #555;
 }
 
-/* Кольорові варіанти товарів */
+/* Product color options */
 .product-colors {
   display: flex;
   align-items: center;
@@ -707,14 +707,14 @@ svg {
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
 }
 
-/* Вибраний колір */
+/* Selected color */
 .product-colors .color-dot.is-selected {
   box-shadow:
     0 0 0 1px #000000,
     inset 0 0 0 4px #ffffff;
 }
 
-/* Стара ціна товару */
+/* Previous product price */
 .product-price del {
   margin-left: 4px;
   color: #8a8a8a;
@@ -722,7 +722,7 @@ svg {
   font-weight: 400;
 }
 
-/* Кольори товарів */
+/* Product colors */
 .product-1-color-1 {
   background-color: #ffd32a;
 }
@@ -811,7 +811,7 @@ svg {
   background-color: #d9e1e7;
 }
 
-/* Для вузьких телефонів обмежуємо кількість колонок, щоб товари не стискалися до непридатної ширини */
+/* Limit the number of columns on narrow phones to keep product cards wide enough to use */
 #view-2:checked ~ .products-grid,
 #view-3:checked ~ .products-grid,
 #view-4:checked ~ .products-grid,
@@ -837,7 +837,7 @@ svg {
   flex-shrink: 0;
 }
 
-/* Пагінація каталогу */
+/* Catalog pagination */
 .catalog-pagination {
   display: flex;
   justify-content: center;
@@ -863,7 +863,7 @@ svg {
   color: #000000;
 }
 
-/* Активна сторінка */
+/* Active page */
 .page-number.active {
   background-color: #f3f3f3;
 }
