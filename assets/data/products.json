@@ -94,11 +94,11 @@
   },
   {
     "id": "red-jacket",
-    "name": "Червона вітровка",
+    "name": "Червона вітрівка",
     "price": 3900,
     "category": "Верхній одяг",
     "image": "assets/images/shop/shop-red-jacket.webp",
-    "alt": "Червона вітровка",
+    "alt": "Червона вітрівка",
     "colors": [
       "red",
       "purple",
